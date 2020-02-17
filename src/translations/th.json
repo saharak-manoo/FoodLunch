@@ -1,0 +1,33 @@
+{
+  "button": {
+    "signIn": "เข้าสู่ระบบ",
+    "signUp": "สมัครเข้าใช้ระบบ",
+    "signOut": "ออกจากระบบ",
+    "back": "ย้อนกลับ",
+    "logout": "ออกจากระบบ",
+    "submit": "บันทึก",
+    "cancel": "ยกเลิก",
+    "ok": "ตกลง",
+    "save": "บันทึก",
+    "signinWith": "เข้าสู่ระบบด้วย",
+    "forgotPassword": "ลืมรหัสผ่าน ?",
+    "resetPassword": "รีเซ็ตรหัสผ่าน",
+    "editProfile": "แก้ไขโปรไฟล์",
+    "joinGroup": "เข้าร่วมกลุ่ม",
+    "invite": "ส่งคำเชิญ",
+    "search": "ค้นหา",
+    "close": "ปิด",
+    "pay": "จ่าย",
+    "payWithSCBEasy": "จ่ายด้วย SCB Easy"
+  },
+  "text": {
+    "mr": "นาย",
+    "mrs": "นาง",
+    "miss": "นางสาว",
+    "info": "ข้อมูล",
+    "members": "สมาชิก",
+    "notiGroupPayment": "วันที่ %{day} ของทุกเดือน",
+    "authenticationRequired": "ต้องมีการรับรองความถูกต้อง",
+    "showPasscode": "แสดงรหัสผ่าน"
+  }
+}

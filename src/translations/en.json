@@ -1,0 +1,33 @@
+{
+  "button": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "back": "Back",
+    "logout": "Log out",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "save": "Save",
+    "signinWith": "Sign in With",
+    "forgotPassword": "Forgot your password ?",
+    "resetPassword": "Reset password",
+    "editProfile": "Edit profile",
+    "joinGroup": "Join Group",
+    "invite": "Invite",
+    "search": "Search",
+    "close": "Close",
+    "pay": "Pay",
+    "payWithSCBEasy": "Pay with SCB Easy"
+  },
+  "text": {
+    "mr": "Mr",
+    "mrs": "Mrs",
+    "miss": "Miss",
+    "info": "Info",
+    "members": "Members",
+    "notiGroupPayment": "%{day} of every month",
+    "authenticationRequired": "Authentication Required",
+    "showPasscode": "Show Passcode"
+  }
+}
