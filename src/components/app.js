@@ -3,7 +3,7 @@ import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import NavigatorView from './navigators/navigatorView';
 import FlashMessage from 'react-native-flash-message';
 import AsyncStorage from '@react-native-community/async-storage';
-import I18n from '../components/i18n';
+import I18n from '../helpers/i18n';
 import {Provider} from 'react-redux';
 import ConfigureStore from './configureStore';
 

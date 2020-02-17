@@ -31,7 +31,7 @@ class LogoView extends Component {
     let isSignIn = await AsyncStorage.getItem('user');
     await this.setState({isSignIn: isSignIn != null});
     if (this.state.isSignIn) {
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('Main');
     } else {
       this.props.navigation.navigate('Login');
     }

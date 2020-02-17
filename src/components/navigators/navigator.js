@@ -10,7 +10,8 @@ import {Badge} from 'react-native-elements';
 
 // View
 import MainView from '../main/mainView';
-import LoginView from '../logo/logoView';
+import LogoView from '../logo/logoView';
+import LoginView from '../auth/login/loginView';
 
 const AuthStack = createStackNavigator(
   {
@@ -139,7 +140,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Main',
     activeColor: '#2370E6',
     inactiveColor: '#202020',
     barStyle: {backgroundColor: '#202020'},
