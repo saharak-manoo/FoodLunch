@@ -29,5 +29,9 @@
     "notiGroupPayment": "วันที่ %{day} ของทุกเดือน",
     "authenticationRequired": "ต้องมีการรับรองความถูกต้อง",
     "showPasscode": "แสดงรหัสผ่าน"
-  }
+  },
+  "placeholder": {
+    "appName": "Food Lunch"
+  },
+  "message": {}
 }

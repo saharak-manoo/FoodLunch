@@ -34,12 +34,28 @@ class LoginView extends Component {
     };
   }
 
+  appHerder() {
+    return (
+      <View>
+        <Appbar.Header style={{backgroundColor: this.props.setting.appColor}}>
+          <Appbar.Content
+            title={I18n.t('placeholder.appName')}
+            titleStyle={{fontFamily: 'Kanit-Light'}}
+          />
+        </Appbar.Header>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View
         style={{
           flex: 1,
-        }}></View>
+          backgroundColor: this.state.isDarkMode ? '#202020' : '#EEEEEE',
+        }}>
+        {this.appHerder()}
+      </View>
     );
   }
 }

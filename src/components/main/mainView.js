@@ -33,7 +33,11 @@ class MainView extends Component {
   }
 
   render() {
-    return <View></View>;
+    return (
+      <View>
+        <Text>dovee</Text>
+      </View>
+    );
   }
 }
 

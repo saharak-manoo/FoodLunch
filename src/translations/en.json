@@ -29,5 +29,9 @@
     "notiGroupPayment": "%{day} of every month",
     "authenticationRequired": "Authentication Required",
     "showPasscode": "Show Passcode"
-  }
+  },
+  "placeholder": {
+    "appName": "Food Lunch"
+  },
+  "message": {}
 }
