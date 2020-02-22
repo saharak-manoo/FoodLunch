@@ -77,4 +77,26 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
+
+  titleContainer: {
+    fontFamily: 'Kanit-Light',
+    flex: 1,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  imageTitle: {
+    fontFamily: 'Kanit-Light',
+    color: 'white',
+    backgroundColor: 'transparent',
+    fontSize: 44,
+  },
+
+  image: {
+    height: 300,
+    width: width,
+    alignSelf: 'stretch',
+    resizeMode: 'cover',
+  },
 });

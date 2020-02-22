@@ -9,11 +9,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Badge} from 'react-native-elements';
 
 // View
-import MainView from '../main/mainView';
+import RestaurantView from '../restaurant/restaurantView';
 import LogoView from '../logo/logoView';
 import LoginView from '../auth/login/loginView';
 import OtpView from '../auth/otp/otpView';
 import PasswordView from '../auth/password/passwordView';
+import MenuView from '../menu/menuView';
 
 const AuthStack = createStackNavigator(
   {
@@ -26,9 +27,10 @@ const AuthStack = createStackNavigator(
   },
 );
 
-const MainStack = createStackNavigator(
+const RestaurantStack = createStackNavigator(
   {
-    Main: {screen: MainView},
+    Restaurant: {screen: RestaurantView},
+    Menu: {screen: MenuView},
   },
   {
     headerMode: 'none',
@@ -37,8 +39,8 @@ const MainStack = createStackNavigator(
 
 const MainNavigator = createMaterialBottomTabNavigator(
   {
-    Main: {
-      screen: MainStack,
+    Restaurant: {
+      screen: RestaurantStack,
       navigationOptions: ({navigation, screenProps, theme}) => {
         let {appColor} = screenProps;
         return {
@@ -62,7 +64,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
       },
     },
     Chat: {
-      screen: MainStack,
+      screen: RestaurantStack,
       navigationOptions: ({navigation, screenProps, theme}) => {
         let {appColor} = screenProps;
         let {unreadMessagesCount} = screenProps;
@@ -93,7 +95,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
       },
     },
     Notification: {
-      screen: MainStack,
+      screen: RestaurantStack,
       navigationOptions: ({navigation, screenProps, theme}) => {
         let {appColor} = screenProps;
         let {unreadNotificationsCount} = screenProps;
@@ -119,7 +121,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
       },
     },
     Profile: {
-      screen: MainStack,
+      screen: RestaurantStack,
       navigationOptions: ({navigation, screenProps, theme}) => {
         let {appColor} = screenProps;
         return {
@@ -144,7 +146,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
     },
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Restaurant',
     activeColor: '#2370E6',
     inactiveColor: '#202020',
     barStyle: {backgroundColor: '#202020'},

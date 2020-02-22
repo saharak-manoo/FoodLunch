@@ -6194,6 +6194,13 @@ react-native-action-button@^2.8.5:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-animatable@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+  integrity sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-animate-loading-button@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-native-animate-loading-button/-/react-native-animate-loading-button-1.0.3.tgz#6425215f12aca464b8057ac62d9ea4a728375e98"
@@ -6253,6 +6260,13 @@ react-native-i18n@^2.0.15:
   integrity sha512-V8VwUP0TLda3oJvgt5tdnFaOV7WXPhTjCTLO7sXI3C2SHggSbD4bCUryMzNJhesimJidH21V2Owvj4zAylHoQQ==
   dependencies:
     i18n-js "3.0.11"
+
+react-native-image-header-scroll-view@^0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-header-scroll-view/-/react-native-image-header-scroll-view-0.10.3.tgz#1de117fc6a8735aa345a8e6d3bf22f45c4c41742"
+  integrity sha512-5eYNcnZA8Q3jdi/uAIuKvsVg6xg9XNLwF8Bgb7ePtAMVOS5WQgJwgewCNWm191HQ+uLYq35B2wNkFK5rUPYZCw==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"
@@ -6323,6 +6337,11 @@ react-native-screens@^2.0.0-beta.4:
   integrity sha512-wrbhTSNVcgdNcdby3h4CzrYKAA3bf/86UR2vEUIcp8gydzVxi2FQiopBavIrcwFJ9PvwXrERB5rF0VYUkzHpIw==
   dependencies:
     debounce "^1.2.0"
+
+react-native-scrollable-navigation-bar@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-navigation-bar/-/react-native-scrollable-navigation-bar-1.0.3.tgz#df3e65c3a071436d3e22d2101f24e232c41af910"
+  integrity sha512-uboI/C7srxzZudBvT3lgUeCh2o3tnDKBmxEX7U2E3y728rA6NdjSYFFoY+m1ud6ScJff7OTGcVLAtdv5VF+Egg==
 
 react-native-status-bar-height@^2.2.0:
   version "2.4.0"
