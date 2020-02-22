@@ -47,7 +47,8 @@
     "oldPassword": "รหัสผ่านเก่า",
     "newPassword": "รหัสผ่านใหม่",
     "newPasswordConfirmation": "ยืนยันรหัสผ่านใหม่",
-    "name": "ชื่อ"
+    "name": "ชื่อ",
+    "recommendedMenu": "เมนูแนะนำ"
   },
   "message": {
     "otp": "OTP",

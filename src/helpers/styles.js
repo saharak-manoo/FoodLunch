@@ -63,4 +63,18 @@ export const styles = StyleSheet.create({
     paddingBottom: 20,
     color: '#666666',
   },
+
+  listCard: {
+    fontFamily: 'Kanit-Light',
+    height: 40,
+    borderLeftColor: '#03DAC6',
+    borderLeftWidth: 3,
+  },
+
+  textCardList: {
+    fontFamily: 'Kanit-Light',
+    paddingLeft: 15,
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
 });

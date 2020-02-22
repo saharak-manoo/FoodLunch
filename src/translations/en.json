@@ -47,7 +47,8 @@
     "oldPassword": "Old Password",
     "newPassword": "New Password",
     "newPasswordConfirmation": "New Password Confirmation",
-    "name": "Name"
+    "name": "Name",
+    "recommendedMenu": "Recommended menu"
   },
   "message": {
     "otp": "OTP",
