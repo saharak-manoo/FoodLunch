@@ -18,6 +18,9 @@ import I18n from '../../../helpers/i18n';
 import * as Api from '../../actions/api';
 import * as GFun from '../../../helpers/globalFunction';
 import AsyncStorage from '@react-native-community/async-storage';
+import MaterialsIcon from 'react-native-vector-icons/MaterialIcons';
+import {Icon} from 'react-native-elements';
+import {styles} from '../../../helpers/styles';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -28,23 +31,9 @@ class LoginView extends Component {
     super(props);
     this.state = {
       isDarkMode: props.setting.isDarkMode,
-      email: '',
-      password: '',
+      phoneNumber: '',
       spinner: false,
     };
-  }
-
-  appHerder() {
-    return (
-      <View>
-        <Appbar.Header style={{backgroundColor: this.props.setting.appColor}}>
-          <Appbar.Content
-            title={I18n.t('placeholder.appName')}
-            titleStyle={{fontFamily: 'Kanit-Light'}}
-          />
-        </Appbar.Header>
-      </View>
-    );
   }
 
   render() {
@@ -52,9 +41,46 @@ class LoginView extends Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: this.state.isDarkMode ? '#202020' : '#EEEEEE',
+          backgroundColor: this.props.setting.appColor,
         }}>
-        {this.appHerder()}
+        <View style={styles.centerScreen}>
+          <Text style={styles.textHead}>Welcome,</Text>
+          <Text style={styles.textSub}>Fill out to continue</Text>
+          <TextInput
+            mode={'outlined'}
+            placeholder={'Phone number'}
+            value={this.state.phoneNumber}
+            keyboardType="numeric"
+            maxLength={10}
+            onChangeText={phoneNumber =>
+              this.setState({phoneNumber: phoneNumber.replace(/[^0-9]/g, '')})
+            }
+          />
+          <HelperText
+            style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
+            type="error"
+            visible={GFun.validatePhoneNumber(this.state.phoneNumber)}>
+            {I18n.t('message.validatePhoneNumber')}
+          </HelperText>
+          <View
+            style={{
+              alignSelf: 'center',
+              paddingTop: 20,
+            }}>
+            <Icon
+              disabled={this.state.phoneNumber.length !== 10}
+              raised
+              name={'arrow-forward'}
+              type={'material-icons'}
+              color={'#03DAC6'}
+              onPress={() =>
+                this.props.navigation.navigate('Otp', {
+                  phoneNumber: this.state.phoneNumber,
+                })
+              }
+            />
+          </View>
+        </View>
       </View>
     );
   }

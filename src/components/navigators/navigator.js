@@ -12,10 +12,12 @@ import {Badge} from 'react-native-elements';
 import MainView from '../main/mainView';
 import LogoView from '../logo/logoView';
 import LoginView from '../auth/login/loginView';
+import OtpView from '../auth/otp/otpView';
 
 const AuthStack = createStackNavigator(
   {
     Login: {screen: LoginView},
+    Otp: {screen: OtpView},
   },
   {
     headerMode: 'none',

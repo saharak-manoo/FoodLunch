@@ -18,7 +18,8 @@
     "search": "Search",
     "close": "Close",
     "pay": "Pay",
-    "payWithSCBEasy": "Pay with SCB Easy"
+    "payWithSCBEasy": "Pay with SCB Easy",
+    "resendOTP": "Resend OTP"
   },
   "text": {
     "mr": "Mr",
@@ -33,5 +34,9 @@
   "placeholder": {
     "appName": "Food Lunch"
   },
-  "message": {}
+  "message": {
+    "otp": "OTP",
+    "sendOTPSuccessful": "Send otp to %{phoneNumber} successful",
+    "validatePhoneNumber": "Phone number must not be blank and have 10 characters"
+  }
 }

@@ -9,14 +9,14 @@ import ConfigureStore from './configureStore';
 
 const theme = {
   ...DefaultTheme,
-  roundness: 30,
+  roundness: 50,
   colors: {
     ...DefaultTheme.colors,
     placeholder: '#6D6D6D',
     text: '#FFF',
-    primary: '#009FF5',
+    primary: '#03DAC6',
     accent: '#00E2B2',
-    underlineColor: '#6D6D6D',
+    underlineColor: 'transparent',
   },
   fonts: {light: 'Kanit-Light'},
   dark: false,

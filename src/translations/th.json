@@ -18,7 +18,8 @@
     "search": "ค้นหา",
     "close": "ปิด",
     "pay": "จ่าย",
-    "payWithSCBEasy": "จ่ายด้วย SCB Easy"
+    "payWithSCBEasy": "จ่ายด้วย SCB Easy",
+    "resendOTP": "ส่ง OTP อีกครั้ง"
   },
   "text": {
     "mr": "นาย",
@@ -33,5 +34,9 @@
   "placeholder": {
     "appName": "Food Lunch"
   },
-  "message": {}
+  "message": {
+    "otp": "OTP",
+    "sendOTPSuccessful": "ส่งรหัส OTP ไปที่เบอร์ %{phoneNumber} เรียบร้อยแล้ว",
+    "validatePhoneNumber": "เบอร์โทรต้องไม่เว้นว่างและมี 10 ตัว"
+  }
 }
