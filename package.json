@@ -17,6 +17,7 @@
     "react-native": "0.61.5",
     "react-native-action-button": "^2.8.5",
     "react-native-animate-loading-button": "^1.0.3",
+    "react-native-dark-mode": "^0.2.2",
     "react-native-elements": "^1.2.7",
     "react-native-flash-message": "^0.1.15",
     "react-native-gesture-handler": "^1.6.0",

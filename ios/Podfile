@@ -52,6 +52,8 @@ target 'FoodLunch' do
 
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
+  pod 'ReactNativeDarkMode', :path => '../node_modules/react-native-dark-mode'
+
   target 'FoodLunchTests' do
     inherit! :search_paths
     # Pods for testing
