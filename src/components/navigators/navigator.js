@@ -41,108 +41,6 @@ const MainNavigator = createMaterialBottomTabNavigator(
   {
     Restaurant: {
       screen: RestaurantStack,
-      navigationOptions: ({navigation, screenProps, theme}) => {
-        let {appColor} = screenProps;
-        return {
-          tabBarLabel: (
-            <Text
-              style={{textAlign: 'center', flex: 1, fontFamily: 'Kanit-Light'}}>
-              {I18n.t('placeholder.home')}
-            </Text>
-          ),
-          tabBarColor: appColor,
-          tabBarIcon: active => {
-            return (
-              <MatIcon
-                size={26}
-                name="home"
-                color={active.focused ? '#02EC5D' : '#D6D6D6'}
-              />
-            );
-          },
-        };
-      },
-    },
-    Chat: {
-      screen: RestaurantStack,
-      navigationOptions: ({navigation, screenProps, theme}) => {
-        let {appColor} = screenProps;
-        let {unreadMessagesCount} = screenProps;
-        let last = navigation.state.routes.length - 1;
-        let visible = navigation.state.routes[last].routeName !== 'ChatRoom';
-
-        return {
-          tabBarBadge: unreadMessagesCount || false,
-          tabBarVisible: visible,
-          tabBarLabel: (
-            <Text
-              style={{textAlign: 'center', flex: 1, fontFamily: 'Kanit-Light'}}>
-              {I18n.t('placeholder.chat')}
-            </Text>
-          ),
-          tabBarColor: appColor,
-          tabBarIcon: active => {
-            isActive = active.focused;
-            return (
-              <MatIcon
-                size={26}
-                name="chat"
-                color={active.focused ? '#02EC5D' : '#D6D6D6'}
-              />
-            );
-          },
-        };
-      },
-    },
-    Notification: {
-      screen: RestaurantStack,
-      navigationOptions: ({navigation, screenProps, theme}) => {
-        let {appColor} = screenProps;
-        let {unreadNotificationsCount} = screenProps;
-        return {
-          tabBarBadge: unreadNotificationsCount || false,
-          tabBarLabel: (
-            <Text
-              style={{textAlign: 'center', flex: 1, fontFamily: 'Kanit-Light'}}>
-              {I18n.t('placeholder.notifications')}
-            </Text>
-          ),
-          tabBarColor: appColor,
-          tabBarIcon: active => {
-            return (
-              <MatIcon
-                size={26}
-                name="notifications"
-                color={active.focused ? '#02EC5D' : '#D6D6D6'}
-              />
-            );
-          },
-        };
-      },
-    },
-    Profile: {
-      screen: RestaurantStack,
-      navigationOptions: ({navigation, screenProps, theme}) => {
-        let {appColor} = screenProps;
-        return {
-          tabBarLabel: (
-            <Text
-              style={{textAlign: 'center', flex: 1, fontFamily: 'Kanit-Light'}}>
-              {I18n.t('placeholder.profile')}
-            </Text>
-          ),
-          tabBarColor: appColor,
-          tabBarIcon: active => {
-            return (
-              <MatIcon
-                size={26}
-                name="account-box"
-                color={active.focused ? '#02EC5D' : '#D6D6D6'}
-              />
-            );
-          },
-        };
-      },
     },
   },
   {
@@ -158,7 +56,7 @@ const AppNavigator = createSwitchNavigator(
   {
     Logo: LogoView,
     Auth: AuthStack,
-    App: MainNavigator,
+    App: RestaurantStack,
   },
   {
     headerMode: 'none',

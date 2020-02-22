@@ -265,12 +265,12 @@ class RestaurantView extends Component {
 
   render() {
     return (
-      <SafeAreaView
+      <View
         style={{
           flex: 1,
           backgroundColor: this.props.setting.appColor,
         }}>
-        {this.appHerder()}
+        <SafeAreaView>{this.appHerder()}</SafeAreaView>
         <View style={{flex: 0.7, padding: 10}}>
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
@@ -288,7 +288,7 @@ class RestaurantView extends Component {
           </View>
           {this.listRestaurant(restaurants)}
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }
