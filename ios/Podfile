@@ -54,6 +54,12 @@ target 'FoodLunch' do
 
   pod 'ReactNativeDarkMode', :path => '../node_modules/react-native-dark-mode'
 
+  pod 'ReactNativeGetLocation', :path => '../node_modules/react-native-get-location'
+
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
+  pod 'react-native-geocoder-reborn', :path => '../node_modules/react-native-geocoder-reborn'
+
   target 'FoodLunchTests' do
     inherit! :search_paths
     # Pods for testing

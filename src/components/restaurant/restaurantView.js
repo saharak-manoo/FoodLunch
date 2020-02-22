@@ -30,6 +30,8 @@ import {ListItem} from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../../helpers/styles';
+import Geolocation from '@react-native-community/geolocation';
+import Geocoder from 'react-native-geocoder-reborn';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -94,6 +96,40 @@ class RestaurantView extends Component {
     };
   }
 
+  async componentDidMount() {
+    await Geolocation.getCurrentPosition(async info => {
+      console.log(info);
+      let {latitude, longitude} = info.coords;
+      console.log('latitude', latitude);
+      await Geocoder.geocodePosition({
+        lat: latitude,
+        lng: longitude,
+      })
+        .then(currentAddress => {
+          for (address of currentAddress) {
+            if (address.subAdminArea) {
+              this.setState({
+                loading: false,
+                district: address.subAdminArea,
+                adminArea: address.adminArea,
+                country: address.country,
+                location: true,
+              });
+            } else if (address.subLocality) {
+              this.setState({
+                loading: false,
+                district: address.subLocality,
+                adminArea: address.adminArea,
+                country: address.country,
+                location: true,
+              });
+            }
+          }
+        })
+        .catch(err => console.log('err', err));
+    });
+  }
+
   appHerder() {
     return (
       <View>
@@ -104,7 +140,9 @@ class RestaurantView extends Component {
             fontSize: 44,
             fontWeight: 'bold',
           }}
-          dateTitle={'Maejo university'}
+          dateTitle={
+            this.state.district == null ? 'Loading...' : this.state.district
+          }
           dateTitleStyle={{fontFamily: 'Kanit-Light'}}
           imageSource={{
             uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
@@ -305,7 +343,7 @@ class RestaurantView extends Component {
           backgroundColor: this.props.setting.appColor,
         }}>
         <SafeAreaView>{this.appHerder()}</SafeAreaView>
-        <View style={{flex: 0.7, padding: 10}}>
+        <View style={{flex: 0.55, padding: 10}}>
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
               {I18n.t('placeholder.recommendedRestaurant')}

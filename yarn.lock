@@ -980,6 +980,11 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
+"@react-native-community/geolocation@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/geolocation/-/geolocation-2.0.2.tgz#ba8b40f560ead8d014740d1cdea970b33f19312e"
+  integrity sha512-tTNXRCgnhJBu79mulQwzabXRpDqfh/uaDqfHVpvF0nX4NTpolpy6mvTRiFg7eWFPGRArsnZz1EYp6rHfJWGgEA==
+
 "@react-native-community/masked-view@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.6.tgz#c7f2ac187c1f25aa8c30d11baa8f4398eca3bb84"
@@ -6244,6 +6249,11 @@ react-native-flash-message@^0.1.15:
     prop-types "^15.7.2"
     react-native-iphone-x-helper "^1.2.1"
 
+react-native-geocoder-reborn@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-geocoder-reborn/-/react-native-geocoder-reborn-0.9.0.tgz#c5f752851b2c4e6a768be3e84a2a7af3e37afa86"
+  integrity sha512-SsaimqzbUo5RQsuv/othHVK0dv98oThX/0LjpNgP6z0znkVJdMYlT0me5DP9hwcznduEp8FFcMVEnWVGhOz63w==
+
 react-native-gesture-handler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.0.tgz#e9a4e1d0c7ac21eb0d6b6ec013e73f9c0c33a629"
@@ -6253,6 +6263,11 @@ react-native-gesture-handler@^1.6.0:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-get-location@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-get-location/-/react-native-get-location-1.4.2.tgz#d20f16f1230d7e4a4278a47ff83cc52371c5888e"
+  integrity sha512-WtuVgZ2f7cZ/hiuTECnEr5D5yBJCaKnBkRQyaKiGoe2sNHesQhBF9g9L815Z9w0HY5dUDzQIz0NUMNRJ+QxDkA==
 
 react-native-i18n@^2.0.15:
   version "2.0.15"

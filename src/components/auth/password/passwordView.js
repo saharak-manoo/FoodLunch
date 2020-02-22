@@ -64,7 +64,7 @@ class PasswordView extends Component {
           I18n.t('message.login'),
           I18n.t('message.loginSuccessful'),
         );
-        this.props.navigation.navigate('Main');
+        this.props.navigation.navigate('Restaurant');
       }
     }, 300);
   }
