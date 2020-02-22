@@ -29,14 +29,38 @@
     "members": "สมาชิก",
     "notiGroupPayment": "วันที่ %{day} ของทุกเดือน",
     "authenticationRequired": "ต้องมีการรับรองความถูกต้อง",
-    "showPasscode": "แสดงรหัสผ่าน"
+    "showPasscode": "แสดงรหัสผ่าน",
+    "welcome": "ยินดีต้อนรับ",
+    "fillOutToContinue": "กรอกข้อมูลเพื่อไปต่อ",
+    "settingYourPassword": "ตั้งค่ารหัสผ่านของคุณ",
+    "pleaseFill": "โปรดกรอกรหัส",
+    "otpCodeReceivedFromSmsToContinue": "โปรดกรอกรหัส OTP ที่ได้รับจาก sms"
   },
   "placeholder": {
-    "appName": "Food Lunch"
+    "appName": "Food Lunch",
+    "email": "อีเมล",
+    "phoneNumber": "โทรศัพท์",
+    "password": "รหัสผ่าน",
+    "confirmPassword": "ยืนยันรหัสผ่าน",
+    "th": "ภาษาไทย",
+    "appVersion": "เวอร์ชั่น",
+    "oldPassword": "รหัสผ่านเก่า",
+    "newPassword": "รหัสผ่านใหม่",
+    "newPasswordConfirmation": "ยืนยันรหัสผ่านใหม่",
+    "name": "ชื่อ"
   },
   "message": {
     "otp": "OTP",
     "sendOTPSuccessful": "ส่งรหัส OTP ไปที่เบอร์ %{phoneNumber} เรียบร้อยแล้ว",
-    "validatePhoneNumber": "เบอร์โทรต้องไม่เว้นว่างและมี 10 ตัว"
+    "phoneNumberMustBeTen": "เบอร์โทรต้องไม่เว้นว่างและต้องมี 10 ตัว",
+    "notValidate": "ไม่ผ่านการตรวจสอบ",
+    "phoneNumberMustStartsWith": "เบอร์โทรต้องขึ้นต้นด้วยเลข 0",
+    "passwordNotMatch": "รหัสผ่านใหม่กับยืนยันรหัสผ่านใหม่ไม่ตรงกัน",
+    "pleaseInputAllValue": "กรุณากรอกให้ครบ",
+    "passwordLessThanSix": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+    "passwordSameAsOld": "รหัสผ่านใหม่ไม่สามารถซ้ำกับรหัสผ่านเก่าได้",
+    "valueCannotBeBlank": "ไม่สามารถเป็นค่าว่างได้",
+    "login": "เข้าสู่ระบบ",
+    "loginSuccessful": "เข้าสู่ระบบ เรียบร้อยแล้ว"
   }
 }

@@ -13,11 +13,13 @@ import MainView from '../main/mainView';
 import LogoView from '../logo/logoView';
 import LoginView from '../auth/login/loginView';
 import OtpView from '../auth/otp/otpView';
+import PasswordView from '../auth/password/passwordView';
 
 const AuthStack = createStackNavigator(
   {
     Login: {screen: LoginView},
     Otp: {screen: OtpView},
+    Password: {screen: PasswordView},
   },
   {
     headerMode: 'none',

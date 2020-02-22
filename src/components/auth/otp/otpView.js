@@ -34,6 +34,7 @@ class OtpView extends Component {
     this.state = {
       isDarkMode: props.setting.isDarkMode,
       phoneNumber: params.phoneNumber || '',
+      code: '',
       spinner: false,
     };
     console.log(props);
@@ -60,9 +61,9 @@ class OtpView extends Component {
           backgroundColor: this.props.setting.appColor,
         }}>
         <View style={styles.centerScreen}>
-          <Text style={styles.textHead}>Please fill,</Text>
+          <Text style={styles.textHead}>{I18n.t('text.pleaseFill')},</Text>
           <Text style={styles.textSub}>
-            OTP code received from sms to continue
+            {I18n.t('text.otpCodeReceivedFromSmsToContinue')}
           </Text>
           <View style={{justifyContent: 'center'}}>
             <OTPInputView
@@ -70,13 +71,18 @@ class OtpView extends Component {
               placeholderTextColor={'#000'}
               style={{width: width / 1.125, height: 25}}
               pinCount={6}
-              // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
-              // onCodeChanged = {code => { this.setState({code})}}
+              code={this.state.code}
+              onCodeChanged={code => {
+                this.setState({code: code});
+              }}
               autoFocusOnLoad
               codeInputFieldStyle={styles.underlineBase}
               codeInputHighlightStyle={styles.underlineHighLighted}
               onCodeFilled={code => {
-                console.log(`Code is ${code}, you are good to go!`);
+                this.props.navigation.navigate('Password', {
+                  phoneNumber: this.state.phoneNumber,
+                  code: code,
+                });
               }}
             />
           </View>
