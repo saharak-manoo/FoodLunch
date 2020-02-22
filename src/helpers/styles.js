@@ -94,7 +94,6 @@ export const styles = StyleSheet.create({
   },
 
   image: {
-    height: 300,
     width: width,
     alignSelf: 'stretch',
     resizeMode: 'cover',

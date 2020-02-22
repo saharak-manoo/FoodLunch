@@ -105,15 +105,16 @@ class MenuView extends Component {
   appHerderImage() {
     return (
       <HeaderImageScrollView
-        maxHeight={300}
-        minHeight={100}
+        fadeOutForeground
+        maxHeight={GFun.hp(45)}
+        minHeight={GFun.hp(10)}
         renderHeader={() => (
           <ImageBackground
             source={{
               url:
                 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
             }}
-            style={styles.image}
+            style={([styles.image], {height: GFun.hp(45)})}
           />
         )}
         renderFixedForeground={() => this.appHerderFixed()}
@@ -122,12 +123,13 @@ class MenuView extends Component {
             <Text style={styles.imageTitle}>{'KFC'}</Text>
           </View>
         )}>
-        <View style={{flex: 1, height: 1000}}>
+        <View style={{flex: 1, height: height}}>
           <TriggeringView
             onBeginDisplayed={() => this.setState({showNavTitle: false})}
-            onBeginHidden={() => this.setState({showNavTitle: true})}>
-            <Text>Scroll Me!</Text>
-          </TriggeringView>
+            onBeginHidden={() =>
+              this.setState({showNavTitle: true})
+            }></TriggeringView>
+          <Text>Scroll Me!</Text>
         </View>
       </HeaderImageScrollView>
     );
