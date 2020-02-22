@@ -35,7 +35,8 @@
     "settingYourPassword": "ตั้งค่ารหัสผ่านของคุณ",
     "pleaseFill": "โปรดกรอกรหัส",
     "otpCodeReceivedFromSmsToContinue": "โปรดกรอกรหัส OTP ที่ได้รับจาก sms",
-    "price": "ราคา : %{price}"
+    "price": "ราคา : %{price}",
+    "deliveryCost": "ค่าส่ง : %{deliveryCost}"
   },
   "placeholder": {
     "appName": "Food Lunch",
@@ -50,7 +51,9 @@
     "newPasswordConfirmation": "ยืนยันรหัสผ่านใหม่",
     "name": "ชื่อ",
     "recommendedMenu": "เมนูแนะนำ",
-    "allMenu": "เมนูทั้งหมด"
+    "allMenu": "เมนูทั้งหมด",
+    "recommendedRestaurant": "ร้านแนะนำ",
+    "allRestaurant": "ร้านทั้งหมด"
   },
   "message": {
     "otp": "OTP",

@@ -36,133 +36,24 @@ import {
 import HeaderImageScrollView, {
   TriggeringView,
 } from 'react-native-image-header-scroll-view';
-import {ListItem} from 'react-native-elements';
+import {ListItem, Icon, Header} from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../../helpers/styles';
-import {Icon} from 'react-native-elements';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const IS_IOS = Platform.OS === 'ios';
 
-const menus = [
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-  {
-    name: 'เบอร์เกอร์',
-    photo:
-      'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
-  },
-  {
-    name: 'พิซซ่าซูเปอร์ชีส',
-    photo:
-      'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
-  },
-  {
-    name: 'ชุดรวมสแน็ค‬',
-    photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
-  },
-];
-
 class MenuView extends Component {
   constructor(props) {
     super(props);
+    let params = this.props.navigation.state.params;
     this.state = {
       showNavTitle: false,
       search: '',
       isDarkMode: props.setting.isDarkMode,
+      restaurant: params.restaurant,
       spinner: false,
     };
   }
@@ -180,7 +71,7 @@ class MenuView extends Component {
           }}
         />
         <Appbar.Content
-          title={'KFC'}
+          title={this.state.restaurant.name}
           color={this.state.showNavTitle ? '#000' : 'transparent'}
         />
         <Appbar.Action
@@ -196,14 +87,13 @@ class MenuView extends Component {
   appHerderImage() {
     return (
       <HeaderImageScrollView
-        fadeOutForeground
+        style={{flex: 1}}
         maxHeight={GFun.hp(45)}
         minHeight={GFun.hp(10)}
         renderHeader={() => (
           <ImageBackground
             source={{
-              url:
-                'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
+              url: this.state.restaurant.photo,
             }}
             style={([styles.image], {height: GFun.hp(45)})}
           />
@@ -217,7 +107,7 @@ class MenuView extends Component {
         }
         renderForeground={() => (
           <View style={styles.titleContainer}>
-            <Text style={styles.imageTitle}>{'KFC'}</Text>
+            <Text style={styles.imageTitle}>{this.state.restaurant.name}</Text>
           </View>
         )}>
         <View style={{flex: 1, height: height / 1.1, padding: 20}}>
@@ -232,7 +122,7 @@ class MenuView extends Component {
               {I18n.t('placeholder.allMenu')}
             </Text>
           </View>
-          {this.listRestaurant(menus)}
+          {this.listRestaurant(this.state.restaurant.menus)}
         </View>
       </HeaderImageScrollView>
     );
@@ -256,7 +146,7 @@ class MenuView extends Component {
               title={item.name}
               subtitle={item.subtitle}
               leftAvatar={{rounded: false, source: {uri: item.photo}}}
-              rightTitle={200}
+              rightTitle={item.price.toFixed(2)}
               rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
             />
           );

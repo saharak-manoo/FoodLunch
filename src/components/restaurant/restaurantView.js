@@ -36,21 +36,51 @@ const height = Dimensions.get('window').height;
 const IS_IOS = Platform.OS === 'ios';
 const restaurants = [
   {
-    name: 'ชุดรวมสแน็ค‬',
+    name: 'KFC',
     photo: 'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
-    shop: 'KFC',
+    deliveryCost: 10,
+    menus: [
+      {
+        name: 'ชุดรวมสแน็ค‬',
+        price: 199.0,
+        photo:
+          'https://www.finwer.com/uploads/images/image_750x_5c63ece42f760.jpg',
+      },
+      {
+        name: 'ไก่ทอด + วิงซ์แซ่บ 3 ชิ้น',
+        price: 49.0,
+        photo:
+          'https://www.thpromotion.com/wp-content/uploads/2019/10/KFC-%E0%B9%80%E0%B8%84%E0%B9%80%E0%B8%AD%E0%B8%9F%E0%B8%8B%E0%B8%B5-%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%82%E0%B8%A1%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99-3-%E0%B8%8A%E0%B8%B4%E0%B9%89%E0%B8%99-49-%E0%B8%9A%E0%B8%B2%E0%B8%97.jpg',
+      },
+    ],
   },
   {
-    name: 'เบอร์เกอร์',
+    name: 'McDonald’s',
     photo:
       'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
-    shop: 'McDonald’s',
+    deliveryCost: 15,
+    menus: [
+      {
+        name: 'เบอร์เกอร์ไก่',
+        price: 89.0,
+        photo:
+          'https://d8xxy3dl0iwm6.cloudfront.net/wp-content/uploads/2019/10/open_mcdonaldPlantbased1.jpg',
+      },
+    ],
   },
   {
-    name: 'พิซซ่าซูเปอร์ชีส',
+    name: 'The Pizza Company',
     photo:
       'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
-    shop: 'The Pizza Company',
+    deliveryCost: 50,
+    menus: [
+      {
+        name: 'พิซซ่าซูเปอร์ชีส',
+        price: 299.0,
+        photo:
+          'https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-9/p960x960/76198291_10157281093153884_2024780594176589824_o.jpg?_nc_cat=1&_nc_ohc=4KP65r_MDGoAQl8mLO9LCSgni3aN8ha1oEa-Q_zDOYFaX86GyIDX-eSvA&_nc_ht=scontent.fbkk2-8.fna&oh=ab682c55adfa37e85c946657ad424726&oe=5E8C31EC',
+      },
+    ],
   },
 ];
 
@@ -145,7 +175,9 @@ class RestaurantView extends Component {
                           paddingTop: GFun.hp(0.5),
                           paddingLeft: GFun.hp(1),
                         }}>
-                        {item.shop}
+                        {I18n.t('text.deliveryCost', {
+                          deliveryCost: item.deliveryCost,
+                        })}
                       </Text>
                     </View>
 
@@ -235,7 +267,9 @@ class RestaurantView extends Component {
                           paddingTop: GFun.hp(0.5),
                           paddingLeft: GFun.hp(2),
                         }}>
-                        {item.shop}
+                        {I18n.t('text.deliveryCost', {
+                          deliveryCost: item.deliveryCost,
+                        })}
                       </Text>
                     </View>
 
@@ -274,7 +308,7 @@ class RestaurantView extends Component {
         <View style={{flex: 0.7, padding: 10}}>
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
-              {I18n.t('placeholder.recommendedMenu')}
+              {I18n.t('placeholder.recommendedRestaurant')}
             </Text>
           </View>
           {this.listRecommendedRestaurant(restaurants)}
@@ -283,7 +317,7 @@ class RestaurantView extends Component {
         <View style={{flex: 1, padding: 10}}>
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
-              {I18n.t('placeholder.allMenu')}
+              {I18n.t('placeholder.allRestaurant')}
             </Text>
           </View>
           {this.listRestaurant(restaurants)}

@@ -35,7 +35,8 @@
     "settingYourPassword": "Setting your password",
     "pleaseFill": "Please fill",
     "otpCodeReceivedFromSmsToContinue": "OTP code received from sms to continue",
-    "price": "Price : %{price}"
+    "price": "Price : %{price}",
+    "deliveryCost": "Delivery cost : %{deliveryCost}"
   },
   "placeholder": {
     "appName": "Food Lunch",
@@ -50,7 +51,9 @@
     "newPasswordConfirmation": "New Password Confirmation",
     "name": "Name",
     "recommendedMenu": "Recommended menu",
-    "allMenu": "All menu"
+    "allMenu": "All menu",
+    "recommendedRestaurant": "Recommended restaurant",
+    "allRestaurant": "All restaurant"
   },
   "message": {
     "otp": "OTP",
