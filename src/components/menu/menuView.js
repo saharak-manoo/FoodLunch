@@ -65,6 +65,7 @@ class MenuView extends Component {
         <Appbar.Header
           style={{
             backgroundColor: this.state.showNavTitle ? '#FFF' : 'transparent',
+            zIndex: 1000,
           }}>
           <Appbar.BackAction
             onPress={() => this.props.navigation.goBack()}
@@ -119,6 +120,7 @@ class MenuView extends Component {
             height: height / 1.095,
             padding: GFun.hp(3),
             paddingTop: GFun.hp(4),
+            zIndex: 0,
           }}>
           <TriggeringView
             bottomOffset={-GFun.hp(5)}

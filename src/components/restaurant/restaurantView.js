@@ -135,10 +135,10 @@ class RestaurantView extends Component {
     return (
       <View>
         <AppleHeader
-          largeTitle={'Home'}
+          largeTitle={"Welcome Saharak's"}
           largeTitleStyle={{
             fontFamily: 'Kanit-Light',
-            fontSize: 44,
+            fontSize: 30,
             fontWeight: 'bold',
           }}
           dateTitle={
@@ -146,7 +146,8 @@ class RestaurantView extends Component {
           }
           dateTitleStyle={{fontFamily: 'Kanit-Light'}}
           imageSource={{
-            uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
+            uri:
+              'https://scontent.fbkk22-3.fna.fbcdn.net/v/t1.0-9/43037168_484675825344022_2145394713346179072_n.jpg?_nc_cat=110&_nc_eui2=AeFN4DXU_HA8U1ZQWmY4b13PqWGoRXrWsrKZTnTPNY0rGGpE0tlWFTGa3KyGoG3ZtDOnrzb7gq753OgrIJtNS2WIw2vS1gGovYSh9gtqtWDVBA&_nc_ohc=hFP-wRSqSSQAX9K4I2H&_nc_ht=scontent.fbkk22-3.fna&oh=acd1e584738300f1fbddd9bfeefd875b&oe=5EB629AE',
           }}
         />
       </View>
