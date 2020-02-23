@@ -40,6 +40,7 @@ import {styles} from '../../helpers/styles';
 import {Modalize} from 'react-native-modalize';
 
 // View
+import MenuAmountView from '../modal/menuAmountView';
 import OrderTrackingMapView from '../modal/orderTrackingMapView';
 
 const width = Dimensions.get('window').width;
@@ -55,16 +56,16 @@ class MenuView extends Component {
       isDarkMode: props.setting.isDarkMode,
       restaurant: params.restaurant,
       spinner: false,
+      menu: null,
     };
   }
 
-  searchBar = React.createRef();
+  orderTrackingMapModal = React.createRef();
+  menuAmountModal = React.createRef();
 
   componentWillMount() {
     this.props.setPositionNow();
   }
-
-  orderTrackingMapModal = React.createRef();
 
   appHeaderFixed() {
     return (
@@ -138,6 +139,7 @@ class MenuView extends Component {
             padding: GFun.hp(3),
             paddingTop: GFun.hp(3),
             zIndex: 0,
+            backgroundColor: '#EEEEEE',
           }}>
           <TriggeringView bottomOffset={-GFun.hp(20)}></TriggeringView>
 
@@ -166,6 +168,7 @@ class MenuView extends Component {
               animation={'slideInUp'}
               delay={index * (index + 150)}>
               <ListItem
+                containerStyle={{backgroundColor: '#EEEEEE'}}
                 Component={TouchableScale}
                 friction={90}
                 tension={100}
@@ -175,7 +178,7 @@ class MenuView extends Component {
                 leftAvatar={{rounded: false, source: {uri: item.photo}}}
                 rightTitle={item.price.toFixed(2)}
                 rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
-                onPress={this.openOrderTrackingMapModal}
+                onPress={() => this.openMenuAmountModal(item)}
               />
             </Animatable.View>
           );
@@ -184,6 +187,40 @@ class MenuView extends Component {
       />
     );
   };
+
+  openMenuAmountModal = menu => {
+    if (this.menuAmountModal.current) {
+      this.setState({menu: menu});
+      this.menuAmountModal.current.open();
+    }
+  };
+
+  menuAmountModalView(menu) {
+    return (
+      <Modalize
+        ref={this.menuAmountModal}
+        modalStyle={styles.popUpModal}
+        overlayStyle={styles.overlayModal}
+        handleStyle={styles.handleModal}
+        handlePosition="inside"
+        openAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        closeAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        withReactModal
+        adjustToContentHeight>
+        <MenuAmountView
+          modal={this.menuAmountModal}
+          menu={menu}
+          isDarkMode={this.state.isDarkMode}
+        />
+      </Modalize>
+    );
+  }
 
   openOrderTrackingMapModal = () => {
     if (this.orderTrackingMapModal.current) {
@@ -222,11 +259,12 @@ class MenuView extends Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#FFF',
+          backgroundColor: '#EEEEEE',
         }}>
         <StatusBar hidden={true} />
         {this.appHerderImage()}
         {this.orderTrackingMapModalView()}
+        {this.menuAmountModalView(this.state.menu)}
       </View>
     );
   }

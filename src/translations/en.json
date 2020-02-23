@@ -19,7 +19,8 @@
     "close": "Close",
     "pay": "Pay",
     "payWithSCBEasy": "Pay with SCB Easy",
-    "resendOTP": "Resend OTP"
+    "resendOTP": "Resend OTP",
+    "addToBasket": "Add to basket %{totalPrice}"
   },
   "text": {
     "mr": "Mr",

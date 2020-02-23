@@ -323,7 +323,12 @@ class RestaurantView extends Component {
         }}>
         <SafeAreaView>{this.appHerder()}</SafeAreaView>
         <Searchbar
-          style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}
+          style={{
+            marginLeft: 20,
+            marginRight: 20,
+            marginBottom: 20,
+            marginTop: 10,
+          }}
           placeholder="Search"
           onChangeText={search => {
             this.setState({search: search});

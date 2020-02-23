@@ -19,7 +19,8 @@
     "close": "ปิด",
     "pay": "จ่าย",
     "payWithSCBEasy": "จ่ายด้วย SCB Easy",
-    "resendOTP": "ส่ง OTP อีกครั้ง"
+    "resendOTP": "ส่ง OTP อีกครั้ง",
+    "addToBasket": "ใส่ตระกร้า %{totalPrice}"
   },
   "text": {
     "mr": "นาย",
