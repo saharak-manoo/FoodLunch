@@ -21,6 +21,7 @@ import {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 } from '../actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar} from 'react-native-paper';
@@ -48,10 +49,11 @@ class OrderTrackingMapView extends Component {
   }
 
   async componentDidMount() {
+    await this.props.setPositionNow();
     this.setState({
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: this.props.localtion.latitude,
+        longitude: this.props.localtion.longitude,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
@@ -79,9 +81,12 @@ class OrderTrackingMapView extends Component {
           }}
           region={this.state.region}>
           <MapView.Marker
-            coordinate={{latitude: 37.78825, longitude: -122.4324}}
-            title={'title'}
-            description={'description'}
+            coordinate={{
+              latitude: this.props.localtion.latitude,
+              longitude: this.props.localtion.longitude,
+            }}
+            title={this.props.localtion.district}
+            description={this.props.localtion.formattedAddress}
           />
         </MapView>
       </View>
@@ -92,6 +97,7 @@ class OrderTrackingMapView extends Component {
 const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
+  localtion: state.localtion,
 });
 
 const mapDispatchToProps = {
@@ -99,6 +105,7 @@ const mapDispatchToProps = {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 };
 
 export default connect(

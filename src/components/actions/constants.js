@@ -3,3 +3,4 @@ export const UNREAD_NOTIFICATIONS_COUNT = 'UNREAD_NOTIFICATIONS_COUNT';
 export const RESET = 'RESET';
 export const DARK_MODE = 'DARK_MODE';
 export const LANGUAGE = 'LANGUAGE';
+export const POSITION = 'POSITION';

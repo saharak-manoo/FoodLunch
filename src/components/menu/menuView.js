@@ -21,6 +21,7 @@ import {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 } from '../actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar} from 'react-native-paper';
@@ -55,6 +56,10 @@ class MenuView extends Component {
       restaurant: params.restaurant,
       spinner: false,
     };
+  }
+
+  async componentDidMount() {
+    await this.props.setPositionNow();
   }
 
   orderTrackingMapModal = React.createRef();
@@ -227,6 +232,7 @@ class MenuView extends Component {
 const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
+  localtion: state.localtion,
 });
 
 const mapDispatchToProps = {
@@ -234,6 +240,7 @@ const mapDispatchToProps = {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuView);

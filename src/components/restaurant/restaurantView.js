@@ -18,6 +18,7 @@ import {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 } from '../actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar} from 'react-native-paper';
@@ -98,36 +99,7 @@ class RestaurantView extends Component {
   }
 
   async componentDidMount() {
-    await Geolocation.getCurrentPosition(async info => {
-      let {latitude, longitude} = info.coords;
-      await Geocoder.geocodePosition({
-        lat: latitude,
-        lng: longitude,
-      })
-        .then(currentAddress => {
-          for (address of currentAddress) {
-            console.log('address', address);
-            if (address.subAdminArea) {
-              this.setState({
-                loading: false,
-                district: address.subAdminArea,
-                adminArea: address.adminArea,
-                country: address.country,
-                location: true,
-              });
-            } else if (address.subLocality) {
-              this.setState({
-                loading: false,
-                district: address.subLocality,
-                adminArea: address.adminArea,
-                country: address.country,
-                location: true,
-              });
-            }
-          }
-        })
-        .catch(err => console.log('err', err));
-    });
+    await this.props.setPositionNow();
   }
 
   appHerder() {
@@ -141,7 +113,9 @@ class RestaurantView extends Component {
             fontWeight: 'bold',
           }}
           dateTitle={
-            this.state.district == null ? 'Loading...' : this.state.district
+            this.props.localtion.district == null
+              ? 'Loading...'
+              : this.props.localtion.district
           }
           dateTitleStyle={{fontFamily: 'Kanit-Light'}}
           imageSource={{
@@ -373,6 +347,7 @@ class RestaurantView extends Component {
 const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
+  localtion: state.localtion,
 });
 
 const mapDispatchToProps = {
@@ -380,6 +355,7 @@ const mapDispatchToProps = {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
+  setPositionNow,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantView);
