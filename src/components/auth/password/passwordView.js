@@ -9,6 +9,7 @@ import {
   Image,
   StatusBar,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {setScreenBadgeNow, setDarkMode, setLanguage} from '../../actions';
@@ -20,6 +21,7 @@ import * as GFun from '../../../helpers/globalFunction';
 import AsyncStorage from '@react-native-community/async-storage';
 import MaterialsIcon from 'react-native-vector-icons/MaterialIcons';
 import {Icon} from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 import {styles} from '../../../helpers/styles';
 
 const width = Dimensions.get('window').width;
@@ -76,20 +78,27 @@ class PasswordView extends Component {
           flex: 1,
           backgroundColor: this.props.setting.appColor,
         }}>
-        <View style={styles.centerScreen}>
-          <Text style={styles.textHead}>
+        <KeyboardAvoidingView
+          behavior="padding"
+          enabled
+          style={styles.centerScreen}>
+          <Animatable.Text animation={'slideInUp'} style={styles.textHead}>
             {I18n.t('text.settingYourPassword')},
-          </Text>
-          <Text style={styles.textSub}>{I18n.t('text.fillOutToContinue')}</Text>
-          <TextInput
-            keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
-            mode={'outlined'}
-            secureTextEntry
-            autoCorrect={false}
-            placeholder={I18n.t('placeholder.password')}
-            value={this.state.password}
-            onChangeText={password => this.setState({password: password})}
-          />
+          </Animatable.Text>
+          <Animatable.Text animation={'slideInUp'} style={styles.textSub}>
+            {I18n.t('text.fillOutToContinue')}
+          </Animatable.Text>
+          <Animatable.View animation={'slideInUp'}>
+            <TextInput
+              keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
+              mode={'outlined'}
+              secureTextEntry
+              autoCorrect={false}
+              placeholder={I18n.t('placeholder.password')}
+              value={this.state.password}
+              onChangeText={password => this.setState({password: password})}
+            />
+          </Animatable.View>
           <HelperText
             style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
             type="error"
@@ -97,17 +106,19 @@ class PasswordView extends Component {
             {I18n.t('message.passwordLessThanSix')}
           </HelperText>
 
-          <TextInput
-            secureTextEntry
-            autoCorrect={false}
-            keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
-            placeholder={I18n.t('placeholder.confirmPassword')}
-            mode={'outlined'}
-            value={this.state.confirmPassword}
-            onChangeText={confirmPassword =>
-              this.setState({confirmPassword: confirmPassword})
-            }
-          />
+          <Animatable.View animation={'slideInUp'}>
+            <TextInput
+              secureTextEntry
+              autoCorrect={false}
+              keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
+              placeholder={I18n.t('placeholder.confirmPassword')}
+              mode={'outlined'}
+              value={this.state.confirmPassword}
+              onChangeText={confirmPassword =>
+                this.setState({confirmPassword: confirmPassword})
+              }
+            />
+          </Animatable.View>
           <HelperText
             style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
             type={'error'}
@@ -117,7 +128,8 @@ class PasswordView extends Component {
             )}>
             {I18n.t('message.passwordNotMatch')}
           </HelperText>
-          <View
+          <Animatable.View
+            animation={'slideInUp'}
             style={{
               alignSelf: 'center',
               paddingTop: 20,
@@ -132,8 +144,8 @@ class PasswordView extends Component {
               borderRadius={55}
               onPress={this.createUser.bind(this)}
             />
-          </View>
-        </View>
+          </Animatable.View>
+        </KeyboardAvoidingView>
       </View>
     );
   }

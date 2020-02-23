@@ -9,6 +9,7 @@ import {
   Image,
   StatusBar,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {setScreenBadgeNow, setDarkMode, setLanguage} from '../../actions';
@@ -20,6 +21,7 @@ import * as GFun from '../../../helpers/globalFunction';
 import AsyncStorage from '@react-native-community/async-storage';
 import MaterialsIcon from 'react-native-vector-icons/MaterialIcons';
 import {Icon} from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 import {styles} from '../../../helpers/styles';
 
 const width = Dimensions.get('window').width;
@@ -74,27 +76,39 @@ class LoginView extends Component {
           flex: 1,
           backgroundColor: this.props.setting.appColor,
         }}>
-        <View style={styles.centerScreen}>
-          <Text style={styles.textHead}>{I18n.t('text.welcome')},</Text>
-          <Text style={styles.textSub}>{I18n.t('text.fillOutToContinue')}</Text>
-          <TextInput
-            keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
-            mode={'outlined'}
-            placeholder={I18n.t('placeholder.phoneNumber')}
-            value={this.state.phoneNumber}
-            keyboardType={'numeric'}
-            maxLength={10}
-            onChangeText={phoneNumber =>
-              this.setState({phoneNumber: phoneNumber.replace(/[^0-9]/g, '')})
-            }
-          />
+        <KeyboardAvoidingView
+          behavior="padding"
+          enabled
+          style={styles.centerScreen}>
+          <Animatable.Text animation={'slideInUp'} style={styles.textHead}>
+            {I18n.t('text.welcome')},
+          </Animatable.Text>
+          <Animatable.Text animation={'slideInUp'} style={styles.textSub}>
+            {I18n.t('text.fillOutToContinue')}
+          </Animatable.Text>
+          <Animatable.View animation={'slideInUp'}>
+            <TextInput
+              keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
+              mode={'outlined'}
+              placeholder={I18n.t('placeholder.phoneNumber')}
+              value={this.state.phoneNumber}
+              keyboardType={'numeric'}
+              maxLength={10}
+              onChangeText={phoneNumber =>
+                this.setState({
+                  phoneNumber: phoneNumber.replace(/[^0-9]/g, ''),
+                })
+              }
+            />
+          </Animatable.View>
           <HelperText
             style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
             type="error"
             visible={GFun.validatePhoneNumber(this.state.phoneNumber)}>
             {I18n.t('message.phoneNumberMustBeTen')}
           </HelperText>
-          <View
+          <Animatable.View
+            animation={'slideInUp'}
             style={{
               alignSelf: 'center',
               paddingTop: 20,
@@ -109,8 +123,8 @@ class LoginView extends Component {
               borderRadius={55}
               onPress={this.sendOTPOrLogin.bind(this)}
             />
-          </View>
-        </View>
+          </Animatable.View>
+        </KeyboardAvoidingView>
       </View>
     );
   }

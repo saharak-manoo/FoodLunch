@@ -33,7 +33,7 @@ class LogoView extends Component {
     if (this.state.isSignIn) {
       this.props.navigation.navigate('Restaurant');
     } else {
-      this.props.navigation.navigate('Login');
+      this.props.navigation.navigate('Restaurant');
     }
   }
 

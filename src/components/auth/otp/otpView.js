@@ -9,6 +9,7 @@ import {
   Image,
   StatusBar,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {setScreenBadgeNow, setDarkMode, setLanguage} from '../../actions';
@@ -21,6 +22,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import MaterialsIcon from 'react-native-vector-icons/MaterialIcons';
 import {Icon} from 'react-native-elements';
 import {styles} from '../../../helpers/styles';
+import * as Animatable from 'react-native-animatable';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 
 const width = Dimensions.get('window').width;
@@ -60,12 +62,19 @@ class OtpView extends Component {
           flex: 1,
           backgroundColor: this.props.setting.appColor,
         }}>
-        <View style={styles.centerScreen}>
-          <Text style={styles.textHead}>{I18n.t('text.pleaseFill')},</Text>
-          <Text style={styles.textSub}>
+        <KeyboardAvoidingView
+          behavior="padding"
+          enabled
+          style={styles.centerScreen}>
+          <Animatable.Text animation={'slideInUp'} style={styles.textHead}>
+            {I18n.t('text.pleaseFill')},
+          </Animatable.Text>
+          <Animatable.Text animation={'slideInUp'} style={styles.textSub}>
             {I18n.t('text.otpCodeReceivedFromSmsToContinue')}
-          </Text>
-          <View style={{justifyContent: 'center'}}>
+          </Animatable.Text>
+          <Animatable.View
+            animation={'slideInUp'}
+            style={{justifyContent: 'center'}}>
             <OTPInputView
               keyboardType={'numeric'}
               placeholderTextColor={'#000'}
@@ -85,9 +94,12 @@ class OtpView extends Component {
                 });
               }}
             />
-          </View>
-          <Text style={styles.resendOTP}>Resend OTP ?</Text>
-          <View
+          </Animatable.View>
+          <Animatable.Text animation={'slideInUp'} style={styles.resendOTP}>
+            Resend OTP ?
+          </Animatable.Text>
+          <Animatable.View
+            animation={'slideInUp'}
             style={{justifyContent: 'flex-start', alignItems: 'flex-start'}}>
             <AnimateLoadingButton
               ref={c => (this.loadingResendOTP = c)}
@@ -101,8 +113,8 @@ class OtpView extends Component {
               borderRadius={25}
               onPress={this.resendOTP.bind(this)}
             />
-          </View>
-        </View>
+          </Animatable.View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
