@@ -31,6 +31,7 @@ import * as Api from '../actions/api';
 import * as GFun from '../../helpers/globalFunction';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from '../../helpers/styles';
+import {Modalize} from 'react-native-modalize';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -45,6 +46,7 @@ class OrderTrackingMapView extends Component {
       region: {},
       order: null,
       spinner: false,
+      markers: [],
     };
   }
 
@@ -54,9 +56,44 @@ class OrderTrackingMapView extends Component {
       region: {
         latitude: this.props.localtion.latitude,
         longitude: this.props.localtion.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.0022432,
+        longitudeDelta: 0.0022432,
       },
+    });
+
+    this.setState({
+      markers: [
+        {
+          coordinate: {
+            latitude: this.props.localtion.latitude,
+            longitude: this.props.localtion.longitude,
+          },
+          title: this.props.localtion.district,
+          description: this.props.localtion.formattedAddress,
+          pin: {
+            uri:
+              'https://scontent.fbkk22-3.fna.fbcdn.net/v/t1.0-9/43037168_484675825344022_2145394713346179072_n.jpg?_nc_cat=110&_nc_eui2=AeFN4DXU_HA8U1ZQWmY4b13PqWGoRXrWsrKZTnTPNY0rGGpE0tlWFTGa3KyGoG3ZtDOnrzb7gq753OgrIJtNS2WIw2vS1gGovYSh9gtqtWDVBA&_nc_ohc=hFP-wRSqSSQAX9K4I2H&_nc_ht=scontent.fbkk22-3.fna&oh=acd1e584738300f1fbddd9bfeefd875b&oe=5EB629AE',
+          },
+        },
+        {
+          coordinate: {
+            latitude: 18.8870633,
+            longitude: 99.0088528,
+          },
+          title: 'หมูทอดหน้าตั้ง',
+          description: 'ร้านอาหาร',
+          pin: require('../../images/shop.png'),
+        },
+        {
+          coordinate: {
+            latitude: 18.8867483,
+            longitude: 99.0088084,
+          },
+          title: "Sakarak's",
+          description: 'พนักงานส่งอาหาร',
+          pin: require('../../images/car.jpg'),
+        },
+      ],
     });
   }
 
@@ -70,24 +107,31 @@ class OrderTrackingMapView extends Component {
         style={{
           flex: 1,
           paddingTop: 20,
+          backgroundColor: 'transparent',
         }}>
         <MapView
           provider={PROVIDER_GOOGLE}
-          annotations={this.state.markers}
           style={{
             flex: 1,
             height: height,
             width: width,
           }}
           region={this.state.region}>
-          <MapView.Marker
-            coordinate={{
-              latitude: this.props.localtion.latitude,
-              longitude: this.props.localtion.longitude,
-            }}
-            title={this.props.localtion.district}
-            description={this.props.localtion.formattedAddress}
-          />
+          {this.state.markers.map(marker => (
+            <Marker
+              coordinate={marker.coordinate}
+              title={marker.title}
+              description={marker.description}>
+              <Image
+                style={{
+                  height: 45,
+                  width: 45,
+                  borderRadius: 30,
+                }}
+                source={marker.pin}
+              />
+            </Marker>
+          ))}
         </MapView>
       </View>
     );
