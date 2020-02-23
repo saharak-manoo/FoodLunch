@@ -28,11 +28,6 @@ import ActionButton from 'react-native-action-button';
 import I18n from '../../helpers/i18n';
 import * as Api from '../actions/api';
 import * as GFun from '../../helpers/globalFunction';
-import {
-  AppleHeader,
-  ModernHeader,
-  ClassicHeader,
-} from '@freakycoder/react-native-header-view';
 import HeaderImageScrollView, {
   TriggeringView,
 } from 'react-native-image-header-scroll-view';
@@ -40,6 +35,10 @@ import {ListItem, Icon, Header} from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../../helpers/styles';
+import {Modalize} from 'react-native-modalize';
+
+// View
+import OrderTrackingMapView from '../modal/orderTrackingMapView';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -57,6 +56,8 @@ class MenuView extends Component {
       spinner: false,
     };
   }
+
+  orderTrackingMapModal = React.createRef();
 
   appHerderFixed() {
     return (
@@ -163,9 +164,7 @@ class MenuView extends Component {
                 leftAvatar={{rounded: false, source: {uri: item.photo}}}
                 rightTitle={item.price.toFixed(2)}
                 rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
-                onPress={() =>
-                  this.props.navigation.navigate('OrderTrackingMap')
-                }
+                onPress={this.openOrderTrackingMapModal}
               />
             </Animatable.View>
           );
@@ -174,6 +173,38 @@ class MenuView extends Component {
       />
     );
   };
+
+  openOrderTrackingMapModal = () => {
+    if (this.orderTrackingMapModal.current) {
+      this.orderTrackingMapModal.current.open();
+    }
+  };
+
+  orderTrackingMapModalView() {
+    return (
+      <Modalize
+        ref={this.orderTrackingMapModal}
+        modalStyle={styles.popUpModal}
+        overlayStyle={styles.overlayModal}
+        handleStyle={styles.handleModal}
+        handlePosition="inside"
+        openAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        closeAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        withReactModal
+        adjustToContentHeight>
+        <OrderTrackingMapView
+          modal={this.orderTrackingMapModal}
+          isDarkMode={this.state.isDarkMode}
+        />
+      </Modalize>
+    );
+  }
 
   render() {
     return (
@@ -187,6 +218,7 @@ class MenuView extends Component {
           barStyle={'dark-content'}
         />
         {this.appHerderImage()}
+        {this.orderTrackingMapModalView()}
       </View>
     );
   }

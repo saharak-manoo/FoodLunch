@@ -119,4 +119,20 @@ export const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 15,
   },
+
+  popUpModal: {
+    backgroundColor: '#FFF',
+  },
+
+  overlayModal: {
+    backgroundColor: 'transparent',
+  },
+
+  handleModal: {
+    backgroundColor: '#C5C5C5',
+  },
+
+  spinnerTextStyle: {
+    fontFamily: 'Kanit-Light',
+  },
 });

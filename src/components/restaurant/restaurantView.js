@@ -99,15 +99,14 @@ class RestaurantView extends Component {
 
   async componentDidMount() {
     await Geolocation.getCurrentPosition(async info => {
-      console.log(info);
       let {latitude, longitude} = info.coords;
-      console.log('latitude', latitude);
       await Geocoder.geocodePosition({
         lat: latitude,
         lng: longitude,
       })
         .then(currentAddress => {
           for (address of currentAddress) {
+            console.log('address', address);
             if (address.subAdminArea) {
               this.setState({
                 loading: false,

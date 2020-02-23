@@ -28,17 +28,6 @@ import ActionButton from 'react-native-action-button';
 import I18n from '../../helpers/i18n';
 import * as Api from '../actions/api';
 import * as GFun from '../../helpers/globalFunction';
-import {
-  AppleHeader,
-  ModernHeader,
-  ClassicHeader,
-} from '@freakycoder/react-native-header-view';
-import HeaderImageScrollView, {
-  TriggeringView,
-} from 'react-native-image-header-scroll-view';
-import {ListItem, Icon, Header} from 'react-native-elements';
-import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from '../../helpers/styles';
 
@@ -49,7 +38,6 @@ const IS_IOS = Platform.OS === 'ios';
 class OrderTrackingMapView extends Component {
   constructor(props) {
     super(props);
-    let params = this.props.navigation.state.params;
     this.state = {
       search: '',
       isDarkMode: props.setting.isDarkMode,
@@ -79,16 +67,23 @@ class OrderTrackingMapView extends Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#FFF',
+          paddingTop: 20,
         }}>
-        <StatusBar hidden={true} />
-        <View style={{flex: 1}}>
-          <MapView
-            provider={PROVIDER_GOOGLE}
-            style={{flex: 1, height: height, width: width}}
-            region={this.state.region}
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          annotations={this.state.markers}
+          style={{
+            flex: 1,
+            height: height,
+            width: width,
+          }}
+          region={this.state.region}>
+          <MapView.Marker
+            coordinate={{latitude: 37.78825, longitude: -122.4324}}
+            title={'title'}
+            description={'description'}
           />
-        </View>
+        </MapView>
       </View>
     );
   }
