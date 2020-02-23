@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet, Platform} from 'react-native';
+import * as GFun from './globalFunction';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -91,11 +92,31 @@ export const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: 'transparent',
     fontSize: 44,
+    marginBottom: 40,
   },
 
   image: {
     width: width,
     alignSelf: 'stretch',
     resizeMode: 'cover',
+  },
+
+  deliveryTime: {
+    borderRadius: 20,
+    width: GFun.wp(50),
+    height: GFun.hp(4),
+    backgroundColor: 'transparent',
+    borderColor: '#FFF',
+    borderWidth: 2,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+
+  deliveryTimeText: {
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    fontFamily: 'Kanit-Light',
+    color: '#FFF',
+    fontSize: 15,
   },
 });

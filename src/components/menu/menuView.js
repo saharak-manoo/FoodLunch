@@ -60,34 +60,36 @@ class MenuView extends Component {
 
   appHerderFixed() {
     return (
-      <Appbar.Header
-        style={{
-          backgroundColor: this.state.showNavTitle ? '#FFF' : 'transparent',
-        }}>
-        <Appbar.BackAction
-          onPress={() => this.props.navigation.goBack()}
+      <Animatable.View
+        animation={this.state.showNavTitle ? 'fadeIn' : 'fadeInDown'}>
+        <Appbar.Header
           style={{
-            backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
-          }}
-        />
-        <Appbar.Content
-          title={this.state.restaurant.name}
-          color={this.state.showNavTitle ? '#000' : 'transparent'}
-        />
-        <Appbar.Action
-          icon="magnify"
-          style={{
-            backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
-          }}
-        />
-      </Appbar.Header>
+            backgroundColor: this.state.showNavTitle ? '#FFF' : 'transparent',
+          }}>
+          <Appbar.BackAction
+            onPress={() => this.props.navigation.goBack()}
+            style={{
+              backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
+            }}
+          />
+          <Appbar.Content
+            title={this.state.restaurant.name}
+            color={this.state.showNavTitle ? '#000' : 'transparent'}
+          />
+          <Appbar.Action
+            icon="magnify"
+            style={{
+              backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
+            }}
+          />
+        </Appbar.Header>
+      </Animatable.View>
     );
   }
 
   appHerderImage() {
     return (
       <HeaderImageScrollView
-        style={{flex: 1}}
         maxHeight={GFun.hp(45)}
         minHeight={GFun.hp(10)}
         renderHeader={() => (
@@ -98,25 +100,33 @@ class MenuView extends Component {
             style={([styles.image], {height: GFun.hp(45)})}
           />
         )}
-        renderFixedForeground={() =>
-          this.state.showNavTitle ? (
-            <Animatable.View animation="slideInDown">
-              {this.appHerderFixed()}
-            </Animatable.View>
-          ) : null
-        }
+        renderTouchableFixedForeground={() => this.appHerderFixed()}
         renderForeground={() => (
-          <View style={styles.titleContainer}>
+          <Animatable.View
+            animation={this.state.showNavTitle ? 'fadeIn' : 'fadeInDown'}
+            style={styles.titleContainer}>
             <Text style={styles.imageTitle}>{this.state.restaurant.name}</Text>
-          </View>
+            <View style={styles.deliveryTime}>
+              <Text style={styles.deliveryTimeText}>
+                {'Delivery time 10 minute.'}
+              </Text>
+            </View>
+          </Animatable.View>
         )}>
-        <View style={{flex: 1, height: height / 1.1, padding: 20}}>
+        <View
+          style={{
+            flex: 0.5,
+            height: height / 1.095,
+            padding: GFun.hp(3),
+            paddingTop: GFun.hp(4),
+          }}>
           <TriggeringView
-            bottomOffset={-40}
+            bottomOffset={-GFun.hp(5)}
             onBeginDisplayed={() => this.setState({showNavTitle: false})}
             onBeginHidden={() =>
               this.setState({showNavTitle: true})
             }></TriggeringView>
+
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
               {I18n.t('placeholder.allMenu')}
@@ -138,17 +148,21 @@ class MenuView extends Component {
         showsVerticalScrollIndicator={false}
         renderItem={({item, index}) => {
           return (
-            <ListItem
-              Component={TouchableScale}
-              friction={90}
-              tension={100}
-              activeScale={0.95}
-              title={item.name}
-              subtitle={item.subtitle}
-              leftAvatar={{rounded: false, source: {uri: item.photo}}}
-              rightTitle={item.price.toFixed(2)}
-              rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
-            />
+            <Animatable.View
+              animation={'slideInUp'}
+              delay={index * (index + 150)}>
+              <ListItem
+                Component={TouchableScale}
+                friction={90}
+                tension={100}
+                activeScale={0.95}
+                title={item.name}
+                subtitle={item.subtitle}
+                leftAvatar={{rounded: false, source: {uri: item.photo}}}
+                rightTitle={item.price.toFixed(2)}
+                rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
+              />
+            </Animatable.View>
           );
         }}
         keyExtractor={item => item}

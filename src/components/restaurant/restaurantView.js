@@ -32,6 +32,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../../helpers/styles';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoder-reborn';
+import * as Animatable from 'react-native-animatable';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -163,21 +164,23 @@ class RestaurantView extends Component {
         renderItem={({item, index}) => {
           return (
             <TouchableOpacity
-              style={{
-                fontFamily: 'Kanit-Light',
-                flex: 0.7,
-                backgroundColor: this.state.isDarkMode ? '#363636' : '#FFF',
-                margin: GFun.hp(1),
-                borderRadius: 20,
-                width: GFun.wp(33.3),
-                height: GFun.hp(21),
-              }}
               onPress={() => {
                 this.props.navigation.navigate('Menu', {
                   restaurant: item,
                 });
               }}>
-              <View style={{flex: 1}}>
+              <Animatable.View
+                delay={index * (index + 100)}
+                animation={'slideInRight'}
+                style={{
+                  flex: 1,
+                  backgroundColor: this.state.isDarkMode ? '#363636' : '#FFF',
+                  fontFamily: 'Kanit-Light',
+                  margin: GFun.hp(1),
+                  borderRadius: 20,
+                  width: GFun.wp(33.3),
+                  height: GFun.hp(21),
+                }}>
                 <Image
                   style={{
                     width: GFun.wp(33.3),
@@ -234,7 +237,7 @@ class RestaurantView extends Component {
                     </View>
                   </View>
                 </View>
-              </View>
+              </Animatable.View>
             </TouchableOpacity>
           );
         }}
@@ -254,21 +257,23 @@ class RestaurantView extends Component {
         renderItem={({item, index}) => {
           return (
             <TouchableOpacity
-              style={{
-                fontFamily: 'Kanit-Light',
-                flex: 0.7,
-                backgroundColor: this.state.isDarkMode ? '#363636' : '#FFF',
-                margin: GFun.hp(1),
-                borderRadius: 20,
-                width: GFun.wp(90),
-                height: GFun.hp(30),
-              }}
               onPress={() => {
                 this.props.navigation.navigate('Menu', {
                   restaurant: item,
                 });
               }}>
-              <View style={{flex: 1}}>
+              <Animatable.View
+                animation={'slideInUp'}
+                delay={index * (index + 150)}
+                style={{
+                  flex: 1,
+                  fontFamily: 'Kanit-Light',
+                  backgroundColor: this.state.isDarkMode ? '#363636' : '#FFF',
+                  margin: GFun.hp(1),
+                  borderRadius: 20,
+                  width: GFun.wp(90),
+                  height: GFun.hp(30),
+                }}>
                 <Image
                   style={{
                     width: GFun.wp(90),
@@ -326,7 +331,7 @@ class RestaurantView extends Component {
                     </View>
                   </View>
                 </View>
-              </View>
+              </Animatable.View>
             </TouchableOpacity>
           );
         }}
