@@ -15,6 +15,7 @@ import LoginView from '../auth/login/loginView';
 import OtpView from '../auth/otp/otpView';
 import PasswordView from '../auth/password/passwordView';
 import MenuView from '../menu/menuView';
+import OrderTrackingMapView from '../orderTrackingMap/orderTrackingMapView';
 
 const AuthStack = createStackNavigator(
   {
@@ -31,6 +32,7 @@ const RestaurantStack = createStackNavigator(
   {
     Restaurant: {screen: RestaurantView},
     Menu: {screen: MenuView},
+    OrderTrackingMap: {screen: OrderTrackingMapView},
   },
   {
     headerMode: 'none',

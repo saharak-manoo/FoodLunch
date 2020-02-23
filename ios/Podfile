@@ -60,6 +60,12 @@ target 'FoodLunch' do
 
   pod 'react-native-geocoder-reborn', :path => '../node_modules/react-native-geocoder-reborn'
 
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+
+  pod 'GoogleMaps'
+  
+  pod 'Google-Maps-iOS-Utils'
+
   target 'FoodLunchTests' do
     inherit! :search_paths
     # Pods for testing
@@ -76,4 +82,14 @@ target 'FoodLunch-tvOS' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == 'react-native-google-maps'
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_ENABLE_MODULES'] = 'No'
+      end
+    end
+  end
 end

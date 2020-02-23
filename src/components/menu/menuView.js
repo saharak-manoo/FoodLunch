@@ -163,6 +163,9 @@ class MenuView extends Component {
                 leftAvatar={{rounded: false, source: {uri: item.photo}}}
                 rightTitle={item.price.toFixed(2)}
                 rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
+                onPress={() =>
+                  this.props.navigation.navigate('OrderTrackingMap')
+                }
               />
             </Animatable.View>
           );
