@@ -363,6 +363,7 @@ const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
   localtion: state.localtion,
+  basket: state.basket,
 });
 
 const mapDispatchToProps = {
@@ -370,7 +371,7 @@ const mapDispatchToProps = {
   setScreenBadgeNow,
   setDarkMode,
   setLanguage,
-  setPositionNow,
+  setPositionNow
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantView);

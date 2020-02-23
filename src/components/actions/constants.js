@@ -4,3 +4,4 @@ export const RESET = 'RESET';
 export const DARK_MODE = 'DARK_MODE';
 export const LANGUAGE = 'LANGUAGE';
 export const POSITION = 'POSITION';
+export const BASKET = 'BASKET';

@@ -23,6 +23,7 @@ import {
   setDarkMode,
   setLanguage,
   setPositionNow,
+  setBasket,
 } from '../actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar, RadioButton} from 'react-native-paper';
@@ -57,6 +58,21 @@ class MenuAmountView extends Component {
     }
 
     return total;
+  }
+
+  click() {
+    this.loadingAddToBasket.showLoading(true);
+    setTimeout(() => {
+      let menu = this.props.menu;
+      this.loadingAddToBasket.showLoading(false);
+      this.props.setBasket({
+        name: menu.name,
+        price: menu.price,
+        amount: this.state.amount,
+        isExtra: this.state.status == 'extra',
+      });
+      this.props.modal.current.close();
+    }, 600);
   }
 
   render() {
@@ -107,6 +123,9 @@ class MenuAmountView extends Component {
             <RadioButton
               value={this.state.status}
               status={this.state.status == 'normal' ? 'checked' : 'unchecked'}
+              onPress={() => {
+                this.setState({status: 'normal'});
+              }}
             />
             <Text
               style={{
@@ -137,6 +156,9 @@ class MenuAmountView extends Component {
             <RadioButton
               value={this.state.status}
               status={this.state.status == 'extra' ? 'checked' : 'unchecked'}
+              onPress={() => {
+                this.setState({status: 'extra'});
+              }}
             />
             <Text
               style={{
@@ -182,7 +204,7 @@ class MenuAmountView extends Component {
 
         <View style={{flex: 1, paddingBottom: 25, justifyContent: 'flex-end'}}>
           <AnimateLoadingButton
-            ref={c => (this.loadingSettingDueDate = c)}
+            ref={c => (this.loadingAddToBasket = c)}
             width={width - 35}
             height={50}
             titleFontFamily={'Kanit-Light'}
@@ -193,6 +215,7 @@ class MenuAmountView extends Component {
             titleColor="#FFF"
             backgroundColor="#03DAC6"
             borderRadius={25}
+            onPress={this.click.bind(this)}
           />
         </View>
       </View>
@@ -204,6 +227,7 @@ const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
   localtion: state.localtion,
+  basket: state.basket,
 });
 
 const mapDispatchToProps = {
@@ -212,6 +236,7 @@ const mapDispatchToProps = {
   setDarkMode,
   setLanguage,
   setPositionNow,
+  setBasket,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuAmountView);

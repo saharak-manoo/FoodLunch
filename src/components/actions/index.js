@@ -4,6 +4,7 @@ import {
   RESET,
   DARK_MODE,
   POSITION,
+  BASKET,
 } from '../actions/constants';
 import * as Api from './api';
 import {Platform} from 'react-native';
@@ -145,5 +146,17 @@ export const setPositionNow = () => {
           ),
         );
     });
+  };
+};
+
+export const basket = payload => ({
+  type: BASKET,
+  payload,
+});
+
+export const setBasket = menu => {
+  console.log('menu', menu);
+  return dispatch => {
+    dispatch(basket(menu));
   };
 };

@@ -23,6 +23,7 @@ import {
   setDarkMode,
   setLanguage,
   setPositionNow,
+  setBasket,
 } from '../actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar} from 'react-native-paper';
@@ -41,6 +42,7 @@ import {Modalize} from 'react-native-modalize';
 
 // View
 import MenuAmountView from '../modal/menuAmountView';
+import BasketView from '../modal/basketView';
 import OrderTrackingMapView from '../modal/orderTrackingMapView';
 
 const width = Dimensions.get('window').width;
@@ -50,6 +52,7 @@ const IS_IOS = Platform.OS === 'ios';
 class MenuView extends Component {
   constructor(props) {
     super(props);
+    console.log('props', props);
     let params = this.props.navigation.state.params;
     this.state = {
       search: '',
@@ -62,6 +65,7 @@ class MenuView extends Component {
 
   orderTrackingMapModal = React.createRef();
   menuAmountModal = React.createRef();
+  basketModal = React.createRef();
 
   componentWillMount() {
     this.props.setPositionNow();
@@ -174,10 +178,15 @@ class MenuView extends Component {
                 tension={100}
                 activeScale={0.95}
                 title={item.name}
+                titleStyle={{fontFamily: 'Kanit-Light'}}
                 subtitle={item.subtitle}
                 leftAvatar={{rounded: false, source: {uri: item.photo}}}
                 rightTitle={item.price.toFixed(2)}
-                rightTitleStyle={{fontWeight: 'bold', color: '#000'}}
+                rightTitleStyle={{
+                  fontWeight: 'bold',
+                  color: '#000',
+                  fontFamily: 'Kanit-Light',
+                }}
                 onPress={() => this.openMenuAmountModal(item)}
               />
             </Animatable.View>
@@ -222,6 +231,43 @@ class MenuView extends Component {
     );
   }
 
+  openBasketModal = () => {
+    if (this.basketModal.current) {
+      this.basketModal.current.open();
+    }
+  };
+
+  basketModalView() {
+    return (
+      <Modalize
+        ref={this.basketModal}
+        modalStyle={styles.popUpModal}
+        overlayStyle={styles.overlayModal}
+        handleStyle={styles.handleModal}
+        handlePosition="inside"
+        openAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        closeAnimationConfig={{
+          timing: {duration: 400},
+          spring: {speed: 10, bounciness: 10},
+        }}
+        withReactModal
+        adjustToContentHeight>
+        <BasketView
+          modal={this.basketModal}
+          isDarkMode={this.state.isDarkMode}
+          onOpenMap={() => {
+            setTimeout(() => {
+              this.openOrderTrackingMapModal();
+            }, 2000);
+          }}
+        />
+      </Modalize>
+    );
+  }
+
   openOrderTrackingMapModal = () => {
     if (this.orderTrackingMapModal.current) {
       this.orderTrackingMapModal.current.open();
@@ -254,6 +300,10 @@ class MenuView extends Component {
     );
   }
 
+  onOpenMap() {
+    console.log('>>>>');
+  }
+
   render() {
     return (
       <View
@@ -265,6 +315,16 @@ class MenuView extends Component {
         {this.appHerderImage()}
         {this.orderTrackingMapModalView()}
         {this.menuAmountModalView(this.state.menu)}
+        {this.basketModalView()}
+        {this.props.basket.menus.length > 0 && (
+          <ActionButton
+            renderIcon={() => <Icon name={'store'} color={'#FFF'} />}
+            buttonColor={'#03DAC6'}
+            onPress={() => {
+              this.openBasketModal();
+            }}
+          />
+        )}
       </View>
     );
   }
@@ -274,6 +334,7 @@ const mapStateToProps = state => ({
   screenBadge: state.screenBadge,
   setting: state.setting,
   localtion: state.localtion,
+  basket: state.basket,
 });
 
 const mapDispatchToProps = {
@@ -282,6 +343,7 @@ const mapDispatchToProps = {
   setDarkMode,
   setLanguage,
   setPositionNow,
+  setBasket,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuView);
