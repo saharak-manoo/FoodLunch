@@ -12,6 +12,7 @@ import {
   ImageBackground,
   StatusBar,
   SafeAreaView,
+  KeyboardAvoidingView,
   View,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
@@ -50,7 +51,6 @@ class MenuView extends Component {
     super(props);
     let params = this.props.navigation.state.params;
     this.state = {
-      showNavTitle: false,
       search: '',
       isDarkMode: props.setting.isDarkMode,
       restaurant: params.restaurant,
@@ -58,35 +58,25 @@ class MenuView extends Component {
     };
   }
 
-  async componentDidMount() {
-    await this.props.setPositionNow();
+  searchBar = React.createRef();
+
+  componentWillMount() {
+    this.props.setPositionNow();
   }
 
   orderTrackingMapModal = React.createRef();
 
-  appHerderFixed() {
+  appHeaderFixed() {
     return (
-      <Animatable.View
-        animation={this.state.showNavTitle ? 'fadeIn' : 'fadeInDown'}>
+      <Animatable.View animation={'fadeIn'}>
         <Appbar.Header
           style={{
-            backgroundColor: this.state.showNavTitle ? '#FFF' : 'transparent',
-            zIndex: 1000,
+            backgroundColor: 'transparent',
           }}>
           <Appbar.BackAction
             onPress={() => this.props.navigation.goBack()}
             style={{
-              backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
-            }}
-          />
-          <Appbar.Content
-            title={this.state.restaurant.name}
-            color={this.state.showNavTitle ? '#000' : 'transparent'}
-          />
-          <Appbar.Action
-            icon="magnify"
-            style={{
-              backgroundColor: this.state.showNavTitle ? 'transparent' : '#FFF',
+              backgroundColor: '#FFF',
             }}
           />
         </Appbar.Header>
@@ -94,9 +84,28 @@ class MenuView extends Component {
     );
   }
 
+  appHeaderSearchBar() {
+    return (
+      <SafeAreaView style={{padding: 20}}>
+        <KeyboardAvoidingView>
+          <Searchbar
+            style={{marginLeft: 20, marginRight: 20}}
+            placeholder="Search"
+            onChangeText={search => {
+              this.setState({search: search});
+            }}
+            value={this.state.search}
+          />
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    );
+  }
+
   appHerderImage() {
     return (
       <HeaderImageScrollView
+        minOverlayOpacity={0.5}
+        maxOverlayOpacity={0.7}
         maxHeight={GFun.hp(45)}
         minHeight={GFun.hp(10)}
         renderHeader={() => (
@@ -107,12 +116,14 @@ class MenuView extends Component {
             style={([styles.image], {height: GFun.hp(45)})}
           />
         )}
-        renderTouchableFixedForeground={() => this.appHerderFixed()}
+        renderTouchableFixedForeground={() => this.appHeaderFixed()}
         renderForeground={() => (
           <Animatable.View
             animation={this.state.showNavTitle ? 'fadeIn' : 'fadeInDown'}
             style={styles.titleContainer}>
-            <Text style={styles.imageTitle}>{this.state.restaurant.name}</Text>
+            <Text style={styles.imageTitle} numberOfLines={1}>
+              {this.state.restaurant.name}
+            </Text>
             <View style={styles.deliveryTime}>
               <Text style={styles.deliveryTimeText}>
                 {'Delivery time 10 minute.'}
@@ -123,17 +134,12 @@ class MenuView extends Component {
         <View
           style={{
             flex: 0.5,
-            height: height / 1.095,
+            height: height / 1.33,
             padding: GFun.hp(3),
-            paddingTop: GFun.hp(4),
+            paddingTop: GFun.hp(3),
             zIndex: 0,
           }}>
-          <TriggeringView
-            bottomOffset={-GFun.hp(5)}
-            onBeginDisplayed={() => this.setState({showNavTitle: false})}
-            onBeginHidden={() =>
-              this.setState({showNavTitle: true})
-            }></TriggeringView>
+          <TriggeringView bottomOffset={-GFun.hp(20)}></TriggeringView>
 
           <View style={styles.listCard}>
             <Text style={styles.textCardList}>
@@ -218,10 +224,7 @@ class MenuView extends Component {
           flex: 1,
           backgroundColor: '#FFF',
         }}>
-        <StatusBar
-          hidden={!this.state.showNavTitle}
-          barStyle={'dark-content'}
-        />
+        <StatusBar hidden={true} />
         {this.appHerderImage()}
         {this.orderTrackingMapModalView()}
       </View>

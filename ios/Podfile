@@ -66,6 +66,8 @@ target 'FoodLunch' do
   
   pod 'Google-Maps-iOS-Utils'
 
+  pod 'RNSearchBar', :path => '../node_modules/react-native-search-bar'
+
   target 'FoodLunchTests' do
     inherit! :search_paths
     # Pods for testing

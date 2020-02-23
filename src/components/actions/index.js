@@ -134,8 +134,8 @@ export const setPositionNow = () => {
         .catch(err =>
           dispatch(
             setPosition({
-              latitude: latitude,
-              longitude: longitude,
+              latitude: null,
+              longitude: null,
               district: '',
               adminArea: '',
               country: '',

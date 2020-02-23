@@ -322,23 +322,33 @@ class RestaurantView extends Component {
           backgroundColor: this.props.setting.appColor,
         }}>
         <SafeAreaView>{this.appHerder()}</SafeAreaView>
-        <View style={{flex: 0.55, padding: 10}}>
-          <View style={styles.listCard}>
-            <Text style={styles.textCardList}>
-              {I18n.t('placeholder.recommendedRestaurant')}
-            </Text>
+        <Searchbar
+          style={{marginLeft: 20, marginRight: 20, marginBottom: 20}}
+          placeholder="Search"
+          onChangeText={search => {
+            this.setState({search: search});
+          }}
+          value={this.state.search}
+        />
+        <ScrollView>
+          <View style={{flex: 0.55, padding: 10}}>
+            <View style={styles.listCard}>
+              <Text style={styles.textCardList}>
+                {I18n.t('placeholder.recommendedRestaurant')}
+              </Text>
+            </View>
+            {this.listRecommendedRestaurant(restaurants)}
           </View>
-          {this.listRecommendedRestaurant(restaurants)}
-        </View>
 
-        <View style={{flex: 1, padding: 10}}>
-          <View style={styles.listCard}>
-            <Text style={styles.textCardList}>
-              {I18n.t('placeholder.allRestaurant')}
-            </Text>
+          <View style={{flex: 1, padding: 10}}>
+            <View style={styles.listCard}>
+              <Text style={styles.textCardList}>
+                {I18n.t('placeholder.allRestaurant')}
+              </Text>
+            </View>
+            {this.listRestaurant(restaurants)}
           </View>
-          {this.listRestaurant(restaurants)}
-        </View>
+        </ScrollView>
       </View>
     );
   }

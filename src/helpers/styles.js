@@ -91,8 +91,8 @@ export const styles = StyleSheet.create({
     fontFamily: 'Kanit-Light',
     color: 'white',
     backgroundColor: 'transparent',
-    fontSize: 44,
-    marginBottom: 40,
+    fontSize: GFun.hp(4.5),
+    marginBottom: GFun.hp(4.5),
   },
 
   image: {
