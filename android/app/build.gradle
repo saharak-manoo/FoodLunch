@@ -179,6 +179,11 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-search-bar')
+    implementation project(':react-native-maps')
+    implementation project(':react-native-geocoder-reborn')
+    implementation project(':@react-native-community_geolocation')
+    implementation project(':react-native-get-location')
     implementation project(':react-native-dark-mode')
     implementation project(':react-native-screens')
     implementation project(':@react-native-community_masked-view')

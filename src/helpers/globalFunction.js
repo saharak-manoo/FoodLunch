@@ -15,7 +15,7 @@ export function successMessage(message, description) {
     message: message,
     description: description,
     type: 'default',
-    backgroundColor: '#00BC5B',
+    backgroundColor: '#03DAC6',
     color: '#FFF',
     duration: 3000,
   });

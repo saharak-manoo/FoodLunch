@@ -28,43 +28,45 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 const IS_IOS = Platform.OS === 'ios';
 
-class LoginView extends Component {
+class PasswordView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isDarkMode: props.setting.isDarkMode,
-      phoneNumber: '',
+      password: '',
+      confirmPassword: '',
       spinner: false,
     };
   }
 
-  sendOTPOrLogin() {
-    this.loadingSendOTPOrLogin.showLoading(true);
+  createUser() {
+    this.loadingRegister.showLoading(true);
     setTimeout(() => {
-      this.loadingSendOTPOrLogin.showLoading(false);
+      this.loadingRegister.showLoading(false);
       if (
-        GFun.validatePhoneNumber(this.state.phoneNumber) &&
-        this.state.phoneNumber.startsWith('0')
+        GFun.validateBlank(this.state.password) ||
+        GFun.validateBlank(this.state.confirmPassword)
       ) {
         GFun.errorMessage(
           I18n.t('message.notValidate'),
-          I18n.t('message.phoneNumberMustBeTen'),
+          I18n.t('message.pleaseInputAllValue'),
         );
-      } else if (!this.state.phoneNumber.startsWith('0')) {
+      } else if (
+        GFun.validatePasswordMatch(
+          this.state.password,
+          this.state.confirmPassword,
+        )
+      ) {
         GFun.errorMessage(
           I18n.t('message.notValidate'),
-          I18n.t('message.phoneNumberMustStartsWith'),
+          I18n.t('message.passwordNotMatch'),
         );
       } else {
         GFun.successMessage(
-          I18n.t('message.otp'),
-          I18n.t('message.sendOTPSuccessful', {
-            phoneNumber: this.state.phoneNumber,
-          }),
+          I18n.t('message.login'),
+          I18n.t('message.loginSuccessful'),
         );
-        this.props.navigation.navigate('Otp', {
-          phoneNumber: this.state.phoneNumber,
-        });
+        this.props.navigation.navigate('Restaurant');
       }
     }, 300);
   }
@@ -81,7 +83,7 @@ class LoginView extends Component {
           enabled
           style={styles.centerScreen}>
           <Animatable.Text animation={'slideInUp'} style={styles.textHead}>
-            {I18n.t('text.welcome')},
+            {I18n.t('text.settingYourPassword')},
           </Animatable.Text>
           <Animatable.Text animation={'slideInUp'} style={styles.textSub}>
             {I18n.t('text.fillOutToContinue')}
@@ -90,22 +92,41 @@ class LoginView extends Component {
             <TextInput
               keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
               mode={'outlined'}
-              placeholder={I18n.t('placeholder.phoneNumber')}
-              value={this.state.phoneNumber}
-              keyboardType={'numeric'}
-              maxLength={10}
-              onChangeText={phoneNumber =>
-                this.setState({
-                  phoneNumber: phoneNumber.replace(/[^0-9]/g, ''),
-                })
-              }
+              secureTextEntry
+              autoCorrect={false}
+              placeholder={I18n.t('placeholder.password')}
+              value={this.state.password}
+              onChangeText={password => this.setState({password: password})}
             />
           </Animatable.View>
           <HelperText
             style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
             type="error"
-            visible={GFun.validatePhoneNumber(this.state.phoneNumber)}>
-            {I18n.t('message.phoneNumberMustBeTen')}
+            visible={GFun.validatePasswordLessThanSix(this.state.password)}>
+            {I18n.t('message.passwordLessThanSix')}
+          </HelperText>
+
+          <Animatable.View animation={'slideInUp'}>
+            <TextInput
+              secureTextEntry
+              autoCorrect={false}
+              keyboardAppearance={this.state.isDarkMode ? 'dark' : 'light'}
+              placeholder={I18n.t('placeholder.confirmPassword')}
+              mode={'outlined'}
+              value={this.state.confirmPassword}
+              onChangeText={confirmPassword =>
+                this.setState({confirmPassword: confirmPassword})
+              }
+            />
+          </Animatable.View>
+          <HelperText
+            style={{fontFamily: 'Kanit-Light', color: '#FF3260'}}
+            type={'error'}
+            visible={GFun.validatePasswordMatch(
+              this.state.password,
+              this.state.confirmPassword,
+            )}>
+            {I18n.t('message.passwordNotMatch')}
           </HelperText>
           <Animatable.View
             animation={'slideInUp'}
@@ -114,14 +135,14 @@ class LoginView extends Component {
               paddingTop: 20,
             }}>
             <AnimateLoadingButton
-              ref={c => (this.loadingSendOTPOrLogin = c)}
+              ref={c => (this.loadingRegister = c)}
               titleFontFamily={'Kanit-Light'}
               width={55}
               height={55}
               title={<MaterialsIcon name="arrow-forward" size={20} />}
               backgroundColor="#03DAC6"
               borderRadius={55}
-              onPress={this.sendOTPOrLogin.bind(this)}
+              onPress={this.createUser.bind(this)}
             />
           </Animatable.View>
         </KeyboardAvoidingView>
@@ -141,4 +162,4 @@ const mapDispatchToProps = {
   setLanguage,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView);
+export default connect(mapStateToProps, mapDispatchToProps)(PasswordView);
