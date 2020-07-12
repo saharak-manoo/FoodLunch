@@ -18,7 +18,9 @@
     "search": "Search",
     "close": "Close",
     "pay": "Pay",
-    "payWithSCBEasy": "Pay with SCB Easy"
+    "payWithSCBEasy": "Pay with SCB Easy",
+    "resendOTP": "Resend OTP",
+    "addToBasket": "Add to basket %{totalPrice}"
   },
   "text": {
     "mr": "Mr",
@@ -28,6 +30,44 @@
     "members": "Members",
     "notiGroupPayment": "%{day} of every month",
     "authenticationRequired": "Authentication Required",
-    "showPasscode": "Show Passcode"
+    "showPasscode": "Show Passcode",
+    "welcome": "Welcome",
+    "fillOutToContinue": "Fill out to continue",
+    "settingYourPassword": "Setting your password",
+    "pleaseFill": "Please fill",
+    "otpCodeReceivedFromSmsToContinue": "OTP code received from sms to continue",
+    "price": "Price : %{price}",
+    "deliveryCost": "Delivery cost : %{deliveryCost}"
+  },
+  "placeholder": {
+    "appName": "Food Lunch",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "th": "TH",
+    "appVersion": "Versions",
+    "oldPassword": "Old Password",
+    "newPassword": "New Password",
+    "newPasswordConfirmation": "New Password Confirmation",
+    "name": "Name",
+    "recommendedMenu": "Recommended menu",
+    "allMenu": "All menu",
+    "recommendedRestaurant": "Recommended restaurant",
+    "allRestaurant": "All restaurant"
+  },
+  "message": {
+    "otp": "OTP",
+    "sendOTPSuccessful": "Send otp to %{phoneNumber} successful",
+    "phoneNumberMustBeTen": "Phone number must be 10 number",
+    "notValidate": "Not validate",
+    "phoneNumberMustStartsWith": "Phone number must starts with 0",
+    "passwordNotMatch": "New password and password confirmation does not match.",
+    "pleaseInputAllValue": "Please input all Field.",
+    "passwordLessThanSix": "Password must be at least 6 characters.",
+    "passwordSameAsOld": "New password cannot be same as old password.",
+    "valueCannotBeBlank": "Cannot be blank.",
+    "login": "Login",
+    "loginSuccessful": "Login successful"
   }
 }
