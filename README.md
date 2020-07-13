@@ -24,7 +24,7 @@ yarn install
 หรือ
 
 ```sh
-ืnpm install
+npm install
 ```
 
 สำหรับ iOS ให้
