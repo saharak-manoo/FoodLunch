@@ -1,17 +1,8 @@
 import React, {Component, useRef} from 'react';
 import {
   Dimensions,
-  FlatList,
   Platform,
-  Modal,
-  RefreshControl,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
   Image,
-  ImageBackground,
-  StatusBar,
-  SafeAreaView,
   View,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
@@ -23,15 +14,7 @@ import {
   setLanguage,
   setPositionNow,
 } from '../actions';
-import AsyncStorage from '@react-native-community/async-storage';
-import {Appbar, Text, Searchbar} from 'react-native-paper';
-import ActionButton from 'react-native-action-button';
-import I18n from '../../helpers/i18n';
-import * as Api from '../actions/api';
-import * as GFun from '../../helpers/globalFunction';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {styles} from '../../helpers/styles';
-import {Modalize} from 'react-native-modalize';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

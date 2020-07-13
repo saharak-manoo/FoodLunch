@@ -1,17 +1,7 @@
 import React, {Component, useRef} from 'react';
 import {
   Dimensions,
-  FlatList,
   Platform,
-  Modal,
-  RefreshControl,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
-  Image,
-  ImageBackground,
-  StatusBar,
-  SafeAreaView,
   View,
   TouchableWithoutFeedback,
 } from 'react-native';
@@ -25,12 +15,9 @@ import {
   setPositionNow,
   setBasket,
 } from '../actions';
-import AsyncStorage from '@react-native-community/async-storage';
-import {Appbar, Text, Searchbar, RadioButton} from 'react-native-paper';
+import {Text, RadioButton} from 'react-native-paper';
 import I18n from '../../helpers/i18n';
-import * as Api from '../actions/api';
 import * as GFun from '../../helpers/globalFunction';
-import {styles} from '../../helpers/styles';
 import AnimateLoadingButton from 'react-native-animate-loading-button';
 import NumericInput from 'react-native-numeric-input';
 

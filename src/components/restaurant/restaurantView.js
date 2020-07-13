@@ -20,24 +20,13 @@ import {
   setLanguage,
   setPositionNow,
 } from '../actions';
-import AsyncStorage from '@react-native-community/async-storage';
 import {Appbar, Text, Searchbar} from 'react-native-paper';
-import ActionButton from 'react-native-action-button';
 import I18n from '../../helpers/i18n';
-import * as Api from '../actions/api';
 import * as GFun from '../../helpers/globalFunction';
 import {AppleHeader} from '@freakycoder/react-native-header-view';
-import {ListItem} from 'react-native-elements';
-import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../../helpers/styles';
-import Geolocation from '@react-native-community/geolocation';
-import Geocoder from 'react-native-geocoder-reborn';
 import * as Animatable from 'react-native-animatable';
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
-const IS_IOS = Platform.OS === 'ios';
 const restaurants = [
   {
     name: 'KFC',
